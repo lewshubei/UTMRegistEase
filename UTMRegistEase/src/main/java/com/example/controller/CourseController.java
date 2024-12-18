@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/student")
 public class CourseController {
 
     @GetMapping("/registration")
     public String showRegistrationPage() {
-        return "CourseRegistrationSlip";
+        return "courseRegistrationSlip";
     }
 }

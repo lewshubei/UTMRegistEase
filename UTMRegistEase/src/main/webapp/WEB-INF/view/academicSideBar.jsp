@@ -7,9 +7,9 @@
 	<div class="sidebar">
 		<div class="sidebar-container">
 			<ul>
-				<li class="logo"><img src="/UTMRegistEase/resources/images/UTM-LOGO.png" alt="Logo"></li>
-				<li><a href="<c:url value='/UTMRegistEase/academic/home'/>"><img src="/UTMRegistEase/resources/icons/dashboard.png" alt="Dashboard Icon"></a></li>
-				<li><a href="<c:url value='/UTMRegistEase/academic/request'/>"><img src="/UTMRegistEase/resources/icons/request.png" alt="Location Icon"></a></li>
+				<li class="logo"><img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo"></li>
+				<li><a href="<c:url value='/academic/home'/>"><img src="<c:url value='/resources/icons/dashboard.png'/>" alt="Dashboard Icon"></a></li>
+				<li><a href="<c:url value='/academic/request'/>"><img src="<c:url value='/resources/icons/request.png'/>" alt="Request Icon"></a></li>
 			</ul>
 		</div>
 	</div>

@@ -19,11 +19,11 @@ public class AcademicController {
 	
 	@GetMapping("/request")
 	public String showRequestPage() {
-		return "academicRequest";
+		return "academicRequestList";
 	}
 
 	@GetMapping("/request/view")
 	public String showViewRegistrationRequestPage() {
-		return "academicRequestList";
+		return "academicRequest";
 	}
 }

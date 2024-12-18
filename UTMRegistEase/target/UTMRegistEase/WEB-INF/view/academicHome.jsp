@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="/UTMRegistEase/resources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/styles.css'/>">
 </head>
 <body>
     <!-- Sidebar -->
