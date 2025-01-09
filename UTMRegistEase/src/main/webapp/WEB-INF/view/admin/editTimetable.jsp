@@ -190,7 +190,7 @@ th:nth-child(8), td:nth-child(7) {
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="entry" items="${timetableList}" varStatus="status">
+            <c:forEach var="entry" items="${timetables}" varStatus="status">
                 <!-- First Row (Lecture 1) -->
                 <c:set var="rowspan" value="1" />
                 <c:if test="${t.day2 != null && !t.day2.isEmpty()}">
