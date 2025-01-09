@@ -239,7 +239,7 @@ th:nth-child(7), td:nth-child(7) {
                 </tr>
             </thead>
             <tbody>
-    <c:forEach var="entry" items="${timetableList}">
+    <c:forEach var="entry" items="${timetables}">
     <!-- First Row (Lecture 1) -->
     <tr>
         <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
@@ -264,6 +264,8 @@ th:nth-child(7), td:nth-child(7) {
 
 
         </table>
+        
+        
     </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

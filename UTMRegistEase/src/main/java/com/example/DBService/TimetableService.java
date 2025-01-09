@@ -1,46 +1,46 @@
 package com.example.DBService;
 
-import com.example.model.Timetable;
-import java.util.ArrayList;
+import com.example.entity.Timetable;
+import com.example.repository.TimetableDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public class TimetableList {
-    private static List<Timetable> timetableList = new ArrayList<>();
-    private static TimetableList instance;
+@Service
+public class TimetableService {
 
-    static {
-        // Courses with two lectures per week
-        timetableList.add(new Timetable("SECJH", "SECR1013", "DIGITAL LOGIC", "01", 
-                                        "MONDAY", "0800 - 1000", "BILIK KULIAH 3","WEDNESDAY", "0800 - 1000", "BILIK KULIAH 2"));
-        timetableList.add(new Timetable("SECJH", "SECR1013", "DIGITAL LOGIC", "02", 
-                                        "MONDAY", "0900 - 1100", "BILIK KULIAH 6","TUESDAY", "0800 - 1000", "BILIK KULIAH 1"));
+    @Autowired
+    private TimetableDao timetableDao;
 
-        // Courses with one lecture per week
-        timetableList.add(new Timetable("SECJH", "SECI1143", "PROBABILITY & STATISTICAL DATA ANALYSIS", "01", 
-                                        "THURSDAY", "0800 - 1000",  "BILIK KULIAH 2",null, null,null));
-        timetableList.add(new Timetable("SECVH", "SECJ2154", "OBJECT-ORIENTED PROGRAMMING", "01", 
-                                        "MONDAY", "0800 - 1100", "BILIK KULIAH 3",null, null, null));
+    // 1. Get all timetables
+    public List<Timetable> getAllTimetables() {
+        return timetableDao.findAll();
     }
 
-    public static List<Timetable> getTimetableList() {
-        return timetableList;
-    }
-    
-    public void addTimetable(Timetable timetable) {
-        timetableList.add(timetable);
-    }
-    
-    public static TimetableList getInstance() {
-        if (instance == null) {
-            instance = new TimetableList();
-        }
-        return instance;
-    }
-    
-    public void removeTimetable(int index) {
-        if (index >= 0 && index < timetableList.size()) {
-            timetableList.remove(index);
-        }
+    // 2. Get a timetable by ID
+    public Timetable getTimetableById(int id) {
+        return timetableDao.findById(id);
     }
 
+    // 3. Save a new timetable
+    public void saveTimetable(Timetable timetable) {
+        timetableDao.save(timetable);
+    }
+
+    // 4. Update an existing timetable
+    public void updateTimetable(Timetable timetable) {
+        timetableDao.update(timetable);
+    }
+
+    // 5. Delete a timetable by ID
+    public void deleteTimetable(int id) {
+        timetableDao.deleteById(id);
+    }
+
+    // 6. Search for timetables by program, code, or name
+    public List<Timetable> searchTimetables(String keyword) {
+        return timetableDao.searchByProgramCodeOrName(keyword);
+    }
 }
+
