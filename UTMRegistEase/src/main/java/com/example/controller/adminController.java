@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin")
 public class adminController {
 	
-	public adminController() {
-        System.out.println("AdminController loaded");
-    }
+	
 
     @Autowired
     private TimetableService timetableService;
