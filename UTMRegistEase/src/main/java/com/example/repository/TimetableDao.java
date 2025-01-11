@@ -107,11 +107,11 @@ public class TimetableDao {
 
     // Additional method: Search by program, code, or name
     public List<Timetable> searchByProgramCodeOrName(String keyword) {
-        try (Session session = sessionFactory.openSession()) {
+    	try (Session session = sessionFactory.openSession()) {
             String query = "from Timetable where lower(program) like :keyword " +
                            "or lower(code) like :keyword or lower(name) like :keyword";
             return session.createQuery(query, Timetable.class)
-                          .setParameter("keyword", "%" + keyword.toLowerCase() + "%")
+                          .setParameter("keyword", "%" + keyword.toLowerCase().trim() + "%")
                           .list();
         }
     }

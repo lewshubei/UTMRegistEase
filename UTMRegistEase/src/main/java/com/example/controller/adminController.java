@@ -2,6 +2,9 @@ package com.example.controller;
 
 import com.example.entity.Timetable;
 import com.example.DBService.TimetableService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +26,7 @@ public class adminController {
     public String listTimetables(Model model) {
         model.addAttribute("timetables", timetableService.getAllTimetables());
         
-        return "admin/timetable"; // View to display list of timetables
+        return "timetable"; // View to display list of timetables
     }
 
     // 2. Show form to add a new timetable
@@ -64,10 +67,10 @@ public class adminController {
     }
 
     // 6. Delete a timetable
-    @PostMapping("/delete/{id}")
+    @GetMapping("/deleteCourse/{id}")
     public String deleteTimetable(@PathVariable int id) {
         timetableService.deleteTimetable(id);
-        return "redirect:/admin/list";
+        return "redirect:/admin/viewTimetable";
     }
 
 //    // 7. View details of a timetable
@@ -79,9 +82,10 @@ public class adminController {
 
     // 8. Search timetables
     @GetMapping("/search")
-    public String searchTimetables(@RequestParam("query") String query, Model model) {
-        model.addAttribute("timetables", timetableService.searchTimetables(query));
+    public String searchTimetables(@RequestParam("searchQuery") String query, Model model) {
+    	List<Timetable> searchResults = timetableService.searchTimetables(query);
+    	model.addAttribute("timetables", searchResults);
         model.addAttribute("searchQuery", query);
-        return "admin/viewTimetable"; // Reuse the list view to show search results
+        return "admin/searchTimetable"; // Reuse the list view to show search results
     }
 }
