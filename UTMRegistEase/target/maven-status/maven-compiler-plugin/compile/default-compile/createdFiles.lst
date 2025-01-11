@@ -1,0 +1,6 @@
+com\example\controller\CourseController.class
+com\example\controller\AcademicController.class
+com\example\DBService\TimetableList.class
+com\example\controller\AdminController.class
+com\example\controller\HomeController.class
+com\example\model\Timetable.class

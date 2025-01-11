@@ -211,7 +211,7 @@ th:nth-child(7), td:nth-child(7) {
     <div class="container">
         <h1>Timetable</h1>
         
-        <form method="get" action="/UTMRegistEase/admin/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
+        <form method="get" action="/UTMRegistEase/admin/search" style="margin-left: 180px; margin-bottom: 20px;">
     <div class="form-group">
         <!-- Use param.searchQuery to retain the search input -->
         <input type="text" name="searchQuery" class="form-control" 
@@ -239,7 +239,7 @@ th:nth-child(7), td:nth-child(7) {
                 </tr>
             </thead>
             <tbody>
-    <c:forEach var="entry" items="${timetableList}">
+    <c:forEach var="entry" items="${timetables}">
     <!-- First Row (Lecture 1) -->
     <tr>
         <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
@@ -264,6 +264,8 @@ th:nth-child(7), td:nth-child(7) {
 
 
         </table>
+        
+        
     </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

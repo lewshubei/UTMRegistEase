@@ -2,6 +2,7 @@ package com.example.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,9 +45,9 @@ public class HomeController {
 
 
     @GetMapping("/home")
-    public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("message", "Welcome to the Spring Web App!");
-        return modelAndView;
+    public String home(Model model) {
+        model.addAttribute("message", "Welcome to Thymeleaf!");
+        return "home"; // Corresponds to /templates/home.html
     }
+
 }
