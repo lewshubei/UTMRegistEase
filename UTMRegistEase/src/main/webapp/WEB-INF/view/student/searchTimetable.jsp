@@ -210,7 +210,7 @@ td {
         <c:if test="${empty timetables}">
             <p style="margin-left: 180px; color: red;">No results found for "<b>${param.searchQuery}</b>".</p>
         </c:if>
-        <form method="get" action="/UTMRegistEase/admin/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
+        <form method="get" action="/UTMRegistEase/student/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
         <button type="submit" class="back-button">Back to View Timetable</button>
     </form>
     </div>
