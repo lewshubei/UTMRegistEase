@@ -56,7 +56,7 @@ public class adminController {
         Timetable timetable = timetableService.getTimetableById(index);
         model.addAttribute("timetable", timetable);
         model.addAttribute("index", index);
-        return "updateCourse";  // Return the view name (JSP)
+        return "admin/updateCourse";  // Return the view name (JSP)
     }
     // 5. Update timetable
     @PostMapping("/updateCourse")
