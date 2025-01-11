@@ -208,7 +208,7 @@ th:nth-child(8), td:nth-child(7) {
                         <a href="/UTMRegistEase/admin/updateCourse?index=${status.index}">
                             <i class='bx bx-edit-alt bx-md'></i>
                         </a>
-                        <a href="/UTMRegistEase/admin/deleteCourse?index=${status.index}" onclick="return confirm('Are you sure you want to delete this course?');">
+                        <a href="/UTMRegistEase/admin/deleteCourse/${status.index}" onclick="return confirm('Are you sure you want to delete this course?');">
                             <i class='bx bx-trash bx-md'></i>
                         </a>
                     </td>
