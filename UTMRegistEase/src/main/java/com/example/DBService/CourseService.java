@@ -44,5 +44,11 @@ public class CourseService {
         return courseDao.searchByProgramCodeOrName(keyword);
     }
     
+    public void submitAllCourses(List<Course> courses) {
+        for (Course course : courses) {
+            course.setSubmitted(true); // Mark as submitted
+            courseDao.save(course); // Save the updated course
+        }
+    }
    
 }

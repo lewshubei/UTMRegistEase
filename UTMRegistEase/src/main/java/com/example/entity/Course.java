@@ -40,6 +40,8 @@ public class Course {
 
     @Column(name = "venue2", nullable = true)
     private String venue2; // For Day 2
+    
+    private boolean submitted;
 
     // Default Constructor
     public Course() {}
@@ -147,5 +149,14 @@ public class Course {
 
     public void setVenue2(String venue2) {
         this.venue2 = venue2;
+    }
+    
+ // Getter and Setter for the submitted field
+    public boolean isSubmitted() {
+        return submitted;
+    }
+
+    public void setSubmitted(boolean submitted) {
+        this.submitted = submitted;
     }
 }

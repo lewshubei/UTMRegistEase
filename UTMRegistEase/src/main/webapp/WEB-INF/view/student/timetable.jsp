@@ -201,7 +201,6 @@ th:nth-child(7), td:nth-child(7) {
 	<div class="sidenav">
         <h2>UTMRegistEase--STUDENT</h2>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Home</a></li>
             <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
             <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
             <li><a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a></li>
@@ -211,7 +210,7 @@ th:nth-child(7), td:nth-child(7) {
     <div class="container">
         <h1>Timetable</h1>
         
-        <form method="get" action="/UTMRegistEase/admin/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
+        <form method="get" action="/UTMRegistEase/student/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
     <div class="form-group">
         <!-- Use param.searchQuery to retain the search input -->
         <input type="text" name="searchQuery" class="form-control" 
@@ -222,7 +221,7 @@ th:nth-child(7), td:nth-child(7) {
     </div>
 </form>
 <c:if test="${not empty param.searchQuery}">
-    <form method="get" action="/UTMRegistEase/admin/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
+    <form method="get" action="/UTMRegistEase/student/viewTimetable" style="margin-left: 180px; margin-bottom: 20px;">
         <button type="submit" class="back-button">Back to View Timetable</button>
     </form>
 </c:if>
