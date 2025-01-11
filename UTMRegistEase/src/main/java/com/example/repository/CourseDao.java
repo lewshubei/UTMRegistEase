@@ -1,6 +1,8 @@
 package com.example.repository;
 
 import com.example.entity.Course;
+import com.example.entity.Timetable;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,7 +21,8 @@ public class CourseDao {
     public CourseDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
+    
+   
     // 1. Retrieve all courses
     public List<Course> findAll() {
         try (Session session = sessionFactory.openSession()) {
@@ -68,15 +71,26 @@ public class CourseDao {
         }
     }
 
-    public List<Course> searchByProgramCodeOrName(String keyword) {
-        try (Session session = sessionFactory.openSession()) {
-            String query = "from Course where lower(program) like :keyword " +
+//    public List<Course> searchByProgramCodeOrName(String keyword) {
+//        try (Session session = sessionFactory.openSession()) {
+//            String query = "from Timetable where lower(program) like :keyword " +
+//                           "or lower(code) like :keyword or lower(name) like :keyword";
+//            return session.createQuery(query, Course.class)
+//                          .setParameter("keyword", "%" + keyword.toLowerCase() + "%")
+//                          .list();
+//        }
+//    }
+    
+    public List<Timetable> searchByProgramCodeOrName(String keyword) {
+    	try (Session session = sessionFactory.openSession()) {
+            String query = "from Timetable where lower(program) like :keyword " +
                            "or lower(code) like :keyword or lower(name) like :keyword";
-            return session.createQuery(query, Course.class)
-                          .setParameter("keyword", "%" + keyword.toLowerCase() + "%")
+            return session.createQuery(query, Timetable.class)
+                          .setParameter("keyword", "%" + keyword.toLowerCase().trim() + "%")
                           .list();
         }
     }
+
 
     
 }
