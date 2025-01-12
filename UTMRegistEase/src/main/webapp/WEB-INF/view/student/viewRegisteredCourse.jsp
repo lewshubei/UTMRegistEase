@@ -228,7 +228,7 @@
 <div style="text-align: center; margin-top: 20px;">
     
     
-    <form action="/UTMRegistEase/student/submittedCourse" method="POST">
+    <form action="/UTMRegistEase/student/submittedCourse" method="GET">
     <!-- Form fields -->
     <button type="submit">Submit</button>
 </form>

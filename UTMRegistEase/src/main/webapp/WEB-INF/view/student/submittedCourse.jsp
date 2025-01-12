@@ -154,12 +154,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<!-- 
     <div class="sidenav">
         <jsp:include page="/WEB-INF/view/studentSideBar.jsp">
             <jsp:param name="activePage" value="addCourse" />
         </jsp:include>
     </div>
+-->
 
+<div class="sidenav">
+<img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
+        <h2>UTMRegistEase--STUDENT</h2>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
+            <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
+            <li><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li>
+            <li><a href="logout.jsp">Logout</a></li>
+        </ul>
+    </div>
     <div class="container">
         <h1>Submitted Courses</h1>
         <table>

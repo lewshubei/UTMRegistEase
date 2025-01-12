@@ -79,12 +79,18 @@ public class StudentController {
     }
     
     
- // Display the timetable
-    @PostMapping("/submittedCourse")
+    @GetMapping("/submittedCourse")
     public String listSubmittedCourse(Model model) {
         model.addAttribute("courses", courseService.getAllCourses());
         return "student/submittedCourse";
     }
+
+    @PostMapping("/submittedCourse")
+    public String submitCourses(Model model) {
+        // Logic to handle course submission
+        return "redirect:/student/submittedCourse";
+    }
+
 
     
     
