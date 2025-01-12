@@ -5,6 +5,7 @@
 <html>
 <head>
     <style>
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #e9ecef;
@@ -20,63 +21,26 @@ h1 {
     font-size: 28px;
     margin-left:180px;
 }
-
-
-.sidenav {
-    height: 100%; /* Full height */
-    width: 250px; /* Sidebar width */
-    position: fixed; /* Fixed position */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #004080; /* Background color */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px; /* Padding from the top */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sidebar shadow */
-    display: flex; /* Add flexbox */
-    flex-direction: column; /* Align items vertically */
-}
-
-.sidenav h2 {
+.search-button {
+    background-color: #004080;
     color: white;
+    border: none;
+    padding: 10px 20px;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-.sidenav ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0;
-    margin: 0;
-    flex-grow: 1; /* Allow items to stretch */
-    display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
-    gap: 10px; /* Space between links */
-}
-
-.sidenav ul li {
-    width: 230px; /* Stretch links to full width */
-}
-
-.sidenav ul li a {
-    display: block; /* Block elements for full-width clickable area */
-    color: white; /* Link color */
-    text-decoration: none; /* Remove underline */
-    padding: 12px 20px; /* Padding for links */
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    text-align: left; /* Align text to the left */
-    transition: all 0.3s; /* Smooth hover effect */
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
 }
 
-.sidenav ul li a:hover {
-    background-color: #003366; /* Darker shade on hover */
-    border-left: 4px solid #ffcc00; /* Yellow border to highlight link */
+.search-button:hover {
+    background-color: #003366; /* Slightly darker shade for hover effect */
 }
 
-.sidenav ul li.active a {
-    background-color: #003366; /* Active link background */
-    border-left: 4px solid #ffcc00; /* Yellow highlight for active link */
-}
+
 
 
 /* Main content area styling */
@@ -87,7 +51,7 @@ h1 {
 
 /* Table styling */
 table {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     border-collapse: collapse;
     background-color: #ffffff;
@@ -95,7 +59,7 @@ table {
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    margin-left: 300px; /* Adjusted margin to move the table further to the right */
+    margin-left:180px;
 }
 
 th, td {
@@ -120,7 +84,19 @@ td {
 
 
 
-/* Back button styling */
+/* Table row hover effect */
+table tbody tr:hover,
+table tbody tr.hover {
+    background-color: #e6f7ff; /* Light blue background */
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 120px; /* Adjust width for Time column */
+}
+
+th:nth-child(7), td:nth-child(7) {
+    width: 150px; /* Adjust width for Venue column */
+}
 .back-button {
     background-color: #004080;
     color: white;
@@ -133,14 +109,12 @@ td {
     margin: 4px 2px;
     cursor: pointer;
     transition: background-color 0.3s;
-    border-radius: 10px;
-    margin-left: 300px; /* Adjusted margin to move the button further to the right */
+    border-radius: 10px
 }
 
 .back-button:hover {
     background-color: #003366; /* Slightly darker shade for hover effect */
 }
-
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .sidenav {
@@ -163,19 +137,16 @@ td {
         font-size: 12px;
     }
 }
-    </style>
-    <title>Search Results</title>
+</style>
+<title>Search Results</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="sidenav">
-        <h2>UTMRegistEase--STUDENT</h2>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
-            <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
-            <li><a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
-        </ul>
-    </div>
+   <div class = "sidenav">
+	<jsp:include page="/WEB-INF/view/studentSideBar.jsp">
+    <jsp:param name="activePage" value="viewTimetable" />
+</jsp:include>
+	</div>
     <div class="container">
         <h1>Search Results</h1>
         

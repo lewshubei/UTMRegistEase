@@ -71,13 +71,27 @@ public class StudentController {
         return "student/searchTimetable"; // Reuse the list view to show search results
     }
     
+    @GetMapping("/searchCourse")
+    public String searchCourse(@RequestParam("searchQuery") String query, Model model) {
+    	List<Timetable> searchResults = timetableService.searchTimetables(query);
+    	model.addAttribute("timetables", searchResults);
+        model.addAttribute("searchQuery", query);
+        return "student/searchCourse"; // Reuse the list view to show search results
+    }
     
- // Display the timetable
-    @PostMapping("/submittedCourse")
+    
+    @GetMapping("/submittedCourse")
     public String listSubmittedCourse(Model model) {
         model.addAttribute("courses", courseService.getAllCourses());
         return "student/submittedCourse";
     }
+
+    @PostMapping("/submittedCourse")
+    public String submitCourses(Model model) {
+        // Logic to handle course submission
+        return "redirect:/student/submittedCourse";
+    }
+
 
     
     

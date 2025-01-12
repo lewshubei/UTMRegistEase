@@ -150,12 +150,20 @@
             }
         }
     </style>
-    <title>Registered Course</title>
+    <title>Submitted Courses</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 </head>
 <body>
+<!-- 
     <div class="sidenav">
+        <jsp:include page="/WEB-INF/view/studentSideBar.jsp">
+            <jsp:param name="activePage" value="addCourse" />
+        </jsp:include>
+    </div>
+-->
+
+<div class="sidenav">
+<img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
         <h2>UTMRegistEase--STUDENT</h2>
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
@@ -164,10 +172,8 @@
             <li><a href="logout.jsp">Logout</a></li>
         </ul>
     </div>
-
     <div class="container">
         <h1>Submitted Courses</h1>
-
         <table>
             <thead>
                 <tr>
@@ -181,33 +187,30 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Iterate over the courses passed from the controller -->
-                <c:forEach var="course" items="${courses}">
-                    <tr>
-                        <td>${course.program}</td>
-                        <td>${course.code}</td>
-                        <td>${course.name}</td>
-                        <td>${course.section}</td>
-                        <td>${course.day1}</td>
-                        <td>${course.time1}</td>
-                        <td>${course.venue1}</td>
+                <c:forEach var="entry" items="${courses}" varStatus="status">
+                    <c:set var="rowspan" value="1" />
+                    <c:if test="${entry.day2 != null && !entry.day2.isEmpty()}">
+                        <c:set var="rowspan" value="2" />
+                    </c:if>
+                    <tr class="${entry.day2 != null ? 'rowspan' : ''}">
+                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
+                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.code}</td>
+                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.name}</td>
+                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.section}</td>
+                        <td>${entry.day1}</td>
+                        <td>${entry.time1}</td>
+                        <td>${entry.venue1}</td>
                     </tr>
-                    <!-- If there's a second session of the course, display it as a new row -->
-                    <c:if test="${course.day2 != null}">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>${course.day2}</td>
-                            <td>${course.time2}</td>
-                            <td>${course.venue2}</td>
+                    <c:if test="${entry.day2 != null}">
+                        <tr class="rowspan">
+                            <td>${entry.day2}</td>
+                            <td>${entry.time2}</td>
+                            <td>${entry.venue2}</td>
                         </tr>
                     </c:if>
                 </c:forEach>
             </tbody>
         </table>
-
     </div>
 </body>
 </html>
