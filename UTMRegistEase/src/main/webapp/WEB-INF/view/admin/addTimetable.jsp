@@ -101,6 +101,9 @@
 
             <label for="code">Course Code:</label>
             <input type="text" id="code" name="code" required>
+            
+            <label for="name">Credit:</label>
+            <input type="text" id="credit" name="credit" required>
 
             <label for="name">Course Name:</label>
             <input type="text" id="name" name="name" required>

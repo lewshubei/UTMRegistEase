@@ -49,7 +49,7 @@ public class TimetableDao {
         }
     }
 
-    // 4. Update an existing timetable
+ // 4. Update an existing timetable
     public void update(Timetable timetable) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
@@ -59,7 +59,8 @@ public class TimetableDao {
             Query query = session.createQuery(
                 "UPDATE Timetable SET program = :program, code = :code, name = :name, " +
                 "section = :section, day1 = :day1, time1 = :time1, venue1 = :venue1, " +
-                "day2 = :day2, time2 = :time2, venue2 = :venue2 WHERE id = :id"
+                "day2 = :day2, time2 = :time2, venue2 = :venue2, credit = :credit " +
+                "WHERE id = :id"
             );
             query.setParameter("program", timetable.getProgram());
             query.setParameter("code", timetable.getCode());
@@ -71,6 +72,7 @@ public class TimetableDao {
             query.setParameter("day2", timetable.getDay2());
             query.setParameter("time2", timetable.getTime2());
             query.setParameter("venue2", timetable.getVenue2());
+            query.setParameter("credit", timetable.getCredit());
             query.setParameter("id", timetable.getId());
 
             int rowsUpdated = query.executeUpdate();
@@ -107,9 +109,10 @@ public class TimetableDao {
 
     // Additional method: Search by program, code, or name
     public List<Timetable> searchByProgramCodeOrName(String keyword) {
-    	try (Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             String query = "from Timetable where lower(program) like :keyword " +
-                           "or lower(code) like :keyword or lower(name) like :keyword";
+                           "or lower(code) like :keyword or lower(name) like :keyword " +
+                           "or cast(credit as string) like :keyword";
             return session.createQuery(query, Timetable.class)
                           .setParameter("keyword", "%" + keyword.toLowerCase().trim() + "%")
                           .list();

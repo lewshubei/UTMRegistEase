@@ -120,6 +120,7 @@ th:nth-child(8), td:nth-child(7) {
             <tr>
                 <th>Program</th>
                 <th>Code</th>
+                <th>Credit</th>
                 <th>Name</th>
                 <th>Section</th>
                 <th>Day</th>
@@ -136,10 +137,11 @@ th:nth-child(8), td:nth-child(7) {
                     <c:set var="rowspan" value="2" />
                 </c:if>
                 <tr class="${entry.day2 != null ? 'rowspan' : ''}">
-                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
-                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.code}</td>
-                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.name}</td>
-                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.section}</td>
+                    <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
+			        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
+			        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.credit}</td>
+			        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
+			        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
                     <td>${entry.day1}</td>
                     <td>${entry.time1}</td>
                     <td>${entry.venue1}</td>
