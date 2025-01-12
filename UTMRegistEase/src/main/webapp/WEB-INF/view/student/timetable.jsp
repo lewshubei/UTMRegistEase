@@ -144,12 +144,11 @@ th:nth-child(7), td:nth-child(7) {
 </head>
 <body>
 
-	<!-- Sidebar -->
-    <div class="sidebar">
-        <jsp:include page="/WEB-INF/view/studentSideBar.jsp">
-            <jsp:param name="activePage" value="addCourse" />
-        </jsp:include>
-    </div>
+	<div class = "sidenav">
+	<jsp:include page="/WEB-INF/view/studentSideBar.jsp">
+    <jsp:param name="activePage" value="viewTimetable" />
+</jsp:include>
+	</div>
 	
     <div class="container">
         <h1>Timetable</h1>
