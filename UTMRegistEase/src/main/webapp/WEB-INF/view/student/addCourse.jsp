@@ -149,6 +149,26 @@
                 font-size: 12px;
             }
         }
+        
+        .search-button {
+		    background-color: #004080;
+		    color: white;
+		    border: none;
+		    padding: 10px 20px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 16px;
+		    margin: 4px 2px;
+		    cursor: pointer;
+		    transition: background-color 0.3s;
+		    border-radius: 10px;
+		}
+	
+		.search-button:hover {
+		    background-color: #003366; /* Slightly darker shade for hover effect */
+		}
+
     </style>
     <title>Add Course</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -167,18 +187,15 @@
     </script>
 </head>
 <body>
-    <div class="sidenav">
-        <h2>UTMRegistEase--STUDENT</h2>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
-            <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
-            <li><a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
-        </ul>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <jsp:include page="/WEB-INF/view/studentSideBar.jsp">
+            <jsp:param name="activePage" value="addCourse" />
+        </jsp:include>
     </div>
     <div class="container">
         <h1>Add Course</h1>
-        <form method="get" action="/UTMRegistEase/student/addCourse" style="margin-left: 180px; margin-bottom: 20px;">
+        <form method="get" action="/UTMRegistEase/student/searchCourse" style="margin-left: 180px; margin-bottom: 20px;">
     <div class="form-group">
         <!-- Use param.searchQuery to retain the search input -->
         <input type="text" name="searchQuery" class="form-control" 

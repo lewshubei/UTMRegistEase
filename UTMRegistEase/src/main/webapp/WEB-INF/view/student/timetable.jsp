@@ -40,61 +40,7 @@ h1 {
     background-color: #003366; /* Slightly darker shade for hover effect */
 }
 
-.sidenav {
-    height: 100%; /* Full height */
-    width: 250px; /* Sidebar width */
-    position: fixed; /* Fixed position */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #004080; /* Background color */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px; /* Padding from the top */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sidebar shadow */
-    display: flex; /* Add flexbox */
-    flex-direction: column; /* Align items vertically */
-}
 
-.sidenav h2 {
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-.sidenav ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0;
-    margin: 0;
-    flex-grow: 1; /* Allow items to stretch */
-    display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
-    gap: 10px; /* Space between links */
-}
-
-.sidenav ul li {
-    width: 230px; /* Stretch links to full width */
-}
-
-.sidenav ul li a {
-    display: block; /* Block elements for full-width clickable area */
-    color: white; /* Link color */
-    text-decoration: none; /* Remove underline */
-    padding: 12px 20px; /* Padding for links */
-    font-size: 16px;
-    text-align: left; /* Align text to the left */
-    transition: all 0.3s; /* Smooth hover effect */
-}
-
-.sidenav ul li a:hover {
-    background-color: #003366; /* Darker shade on hover */
-    border-left: 4px solid #ffcc00; /* Yellow border to highlight link */
-}
-
-.sidenav ul li.active a {
-    background-color: #003366; /* Active link background */
-    border-left: 4px solid #ffcc00; /* Yellow highlight for active link */
-}
 
 
 /* Main content area styling */
@@ -198,15 +144,12 @@ th:nth-child(7), td:nth-child(7) {
 </head>
 <body>
 
-	<div class="sidenav">
-        <h2>UTMRegistEase--STUDENT</h2>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
-            <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
-            <li><a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a></li>
-            <li><a href="/UTMRegistEase/logout">Logout</a></li>
-        </ul>
-    </div>
+	<div class = "sidenav">
+	<jsp:include page="/WEB-INF/view/studentSideBar.jsp">
+    <jsp:param name="activePage" value="viewTimetable" />
+</jsp:include>
+	</div>
+
     <div class="container">
         <h1>Timetable</h1>
         
@@ -241,17 +184,18 @@ th:nth-child(7), td:nth-child(7) {
     <c:forEach var="entry" items="${timetables}">
     <!-- First Row (Lecture 1) -->
     <tr>
-        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
-        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.code}</td>
-        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.name}</td>
-        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.section}</td>
+        <!-- rowspan checks if day2 is not empty or null -->
+        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
+        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
+        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
+        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
         <td>${entry.day1}</td>
         <td>${entry.time1}</td>
         <td>${entry.venue1}</td>
     </tr>
 
     <!-- Second Row (Lecture 2, if available) -->
-    <c:if test="${entry.day2 != null}">
+    <c:if test="${not empty entry.day2}">
         <tr>
             <td>${entry.day2}</td>
             <td>${entry.time2}</td>
@@ -259,6 +203,7 @@ th:nth-child(7), td:nth-child(7) {
         </tr>
     </c:if>
 </c:forEach>
+
 </tbody>
 
 
