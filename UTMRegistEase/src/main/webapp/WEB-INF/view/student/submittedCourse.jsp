@@ -155,14 +155,11 @@
 
 </head>
 <body>
-    <div class="sidenav">
-        <h2>UTMRegistEase--STUDENT</h2>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
-            <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
-            <li><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
-        </ul>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <jsp:include page="/WEB-INF/view/studentSideBar.jsp">
+            <jsp:param name="activePage" value="addCourse" />
+        </jsp:include>
     </div>
 
     <div class="container">
