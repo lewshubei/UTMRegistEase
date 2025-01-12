@@ -9,7 +9,9 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <jsp:include page="academicSideBar.jsp" />
+        <jsp:include page="academicSideBar.jsp">
+        	<jsp:param name="activePage" value="home" />
+        </jsp:include>
     </div>
 
     <!-- Main Content -->

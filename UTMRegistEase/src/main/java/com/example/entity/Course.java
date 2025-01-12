@@ -41,9 +41,12 @@ public class Course {
     @Column(name = "venue2", nullable = true)
     private String venue2; // For Day 2
     
+
     @Column(name = "approval_status")
     private String approval_status;
 
+    private boolean submitted;
+    
     // Default Constructor
     public Course() {}
 
@@ -153,11 +156,22 @@ public class Course {
         this.venue2 = venue2;
     }
     
+
     public String getApproval_status() {
     	return approval_status;
     }
     
     public void setApproval_status(String approval_status) {
     	this.approval_status = approval_status;
+    }
+
+ // Getter and Setter for the submitted field
+    public boolean isSubmitted() {
+        return submitted;
+    }
+
+    public void setSubmitted(boolean submitted) {
+        this.submitted = submitted;
+
     }
 }

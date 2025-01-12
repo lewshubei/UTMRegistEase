@@ -54,6 +54,7 @@ body {
 	padding: 20px;
 	width: 100%;
 	background-color: white;
+	padding-left: 180px;
 }
 
 .content h1 {
@@ -160,9 +161,10 @@ body {
 	border: 1px solid #ddd;
 }
 
-.request {
+.request-list {
 	padding: 20px;
 	width: 100%;
+	padding-left: 180px;
 }
 
 .search-bar {
@@ -276,7 +278,7 @@ body {
 }
 
 .action-select {
-	margin-left: 1100px;
+	margin-left: 1000px;
 	padding: 10px;
 	font-size: 14px;
 	border: 1px solid #ccc;
@@ -332,4 +334,11 @@ body {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+}
+
+.request {
+	padding: 20px;
+	width: 100%;
+	background-color: white;
+	padding-left: 190px;
 }

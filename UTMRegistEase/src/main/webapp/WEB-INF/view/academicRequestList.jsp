@@ -9,10 +9,12 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <jsp:include page="academicSideBar.jsp" />
+        <jsp:include page="academicSideBar.jsp">
+        	<jsp:param name="activePage" value="request" />
+        </jsp:include>
     </div>
 
-    <div class="request">
+    <div class="request-list">
         <input type="text" class="search-bar" placeholder="Search students...">
         <div class="student-container">
             <table class="student-list">

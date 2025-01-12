@@ -5,6 +5,8 @@ import com.example.entity.Course;
 import com.example.DBService.TimetableService;
 import com.example.DBService.CourseService;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,11 @@ public class StudentController {
     }
     
  // 3. Save a new timetable
+//    @PostMapping("/addCourse")
+//    public String saveCourse(@ModelAttribute("course") Course course) {
+//        courseService.saveCourse(course);
+//        return "redirect:/student/viewRegisteredCourse";
+//    }
     @PostMapping("/addCourse")
     public String saveCourse(@ModelAttribute("course") Course course) {
     	course.setApproval_status("PENDING");
@@ -55,12 +62,23 @@ public class StudentController {
         return "redirect:/student/viewRegisteredCourse"; // Redirect back to the course view
     }
    
+ // 8. Search timetables
     @GetMapping("/search")
-    public String searchTimetables(@RequestParam("query") String query, Model model) {
-        model.addAttribute("timetables", timetableService.searchTimetables(query));
+    public String searchTimetables(@RequestParam("searchQuery") String query, Model model) {
+    	List<Timetable> searchResults = timetableService.searchTimetables(query);
+    	model.addAttribute("timetables", searchResults);
         model.addAttribute("searchQuery", query);
-        return "student/viewTimetable"; // Reuse the list view to show search results
+        return "student/searchTimetable"; // Reuse the list view to show search results
     }
     
+    
+ // Display the timetable
+    @PostMapping("/submittedCourse")
+    public String listSubmittedCourse(Model model) {
+        model.addAttribute("courses", courseService.getAllCourses());
+        return "student/submittedCourse";
+    }
 
+    
+    
 }

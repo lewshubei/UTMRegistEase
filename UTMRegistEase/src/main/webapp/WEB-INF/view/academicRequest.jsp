@@ -9,10 +9,12 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <jsp:include page="academicSideBar.jsp" />
+        <jsp:include page="academicSideBar.jsp">
+        	<jsp:param name="activePage" value="request/view" />
+        </jsp:include>
     </div>
 
-    <div class="content">
+    <div class="request">
         <h1>Registration Request</h1>
         <div class="student-header">
             <div class="student-info">

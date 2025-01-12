@@ -170,7 +170,6 @@
     <div class="sidenav">
         <h2>UTMRegistEase--STUDENT</h2>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Home</a></li>
             <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
             <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
             <li><a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a></li>

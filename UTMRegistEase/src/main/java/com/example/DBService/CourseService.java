@@ -1,7 +1,10 @@
 package com.example.DBService;
 
 import com.example.entity.Course;
+import com.example.entity.Timetable;
 import com.example.repository.CourseDao;
+import com.example.repository.TimetableDao;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,9 @@ public class CourseService {
 
     @Autowired
     private CourseDao courseDao;
+    
+    @Autowired
+    private TimetableDao timetableDao;
     
     @Autowired
     public CourseService(CourseDao courseDao) {
@@ -40,9 +46,19 @@ public class CourseService {
     
  
     // 6. Search for courses by program, code, or name
-    public List<Course> searchCourses(String keyword) {
-        return courseDao.searchByProgramCodeOrName(keyword);
+//    public List<Course> searchCourses(String keyword) {
+//        return courseDao.searchByProgramCodeOrName(keyword);
+//    }
+    
+    public List<Timetable> searchTimetables(String keyword) {
+        return timetableDao.searchByProgramCodeOrName(keyword);
     }
     
+    public void submitAllCourses(List<Course> courses) {
+        for (Course course : courses) {
+            course.setSubmitted(true); // Mark as submitted
+            courseDao.save(course); // Save the updated course
+        }
+    }
    
 }

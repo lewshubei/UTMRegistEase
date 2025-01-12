@@ -24,63 +24,19 @@
             border-radius: 8px;
             margin-right:200px;
         }
+        
+        .btn-custom {
+        padding: 10px 20px; /* Ensures consistent padding */
+        font-size: 16px;    /* Ensures consistent font size */
+        line-height: 1.5;   /* Ensures consistent line height */
+    }
+    
+    .btn-secondary
+    {
+    	margin-top: 20px;
+    }
 
-        /* Sidebar styling */
-        .sidenav {
-            height: 100%; /* Full height */
-            width: 250px; /* Sidebar width */
-            position: fixed; /* Fixed position */
-            z-index: 1; /* Stay on top */
-            top: 0;
-            left: 0;
-            background-color: #004080; /* Background color */
-            overflow-x: hidden; /* Disable horizontal scroll */
-            padding-top: 20px; /* Padding from the top */
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sidebar shadow */
-            display: flex; /* Add flexbox */
-            flex-direction: column; /* Align items vertically */
-        }
-
-        .sidenav h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .sidenav ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0;
-            margin: 0;
-            flex-grow: 1; /* Allow items to stretch */
-            display: flex;
-            flex-direction: column; /* Ensure vertical stacking */
-            gap: 10px; /* Space between links */
-        }
-
-        .sidenav ul li {
-            width: 230px; /* Stretch links to full width */
-        }
-
-        .sidenav ul li a {
-            display: block; /* Block elements for full-width clickable area */
-            color: white; /* Link color */
-            text-decoration: none; /* Remove underline */
-            padding: 12px 20px; /* Padding for links */
-            font-size: 16px;
-            text-align: left; /* Align text to the left */
-            transition: all 0.3s; /* Smooth hover effect */
-        }
-
-        .sidenav ul li a:hover {
-            background-color: #003366; /* Darker shade on hover */
-            border-left: 4px solid #ffcc00; /* Yellow border to highlight link */
-        }
-
-        .sidenav ul li.active a {
-            background-color: #003366; /* Active link background */
-            border-left: 4px solid #ffcc00; /* Yellow highlight for active link */
-        }
+       
 
         /* Main content styling */
         .content {
@@ -101,23 +57,15 @@
 
         button[type="submit"] {
             margin-top: 20px;
+            background-color: #004080;
         }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar (Sidenav) -->
-    <div class="sidenav">
-        <h2>UTMRegistEase--ADMIN</h2>
-        <ul class="nav nav-pills nav-stacked">
-            <li><a href="welcomeAdmin.html">Home</a></li>
-            <li><a href="/UTMRegistEase/admin/viewTimetable">View Timetable</a></li>
-            <li><a href="/UTMRegistEase/admin/addTimetable">Add Timetable</a></li>
-            <li><a href="/UTMRegistEase/admin/editTimetable">Edit Timetable</a></li>
-            <li class="active"><a href="/UTMRegistEase/admin/updateCourse?index=${index}">Update Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
-        </ul>
-    </div>
+    <jsp:include page="/WEB-INF/view/adminSidenav.jsp">
+    <jsp:param name="activePage" value="editTimetable" />
+</jsp:include>
 
     <!-- Main content -->
     <div class="container">
@@ -150,11 +98,18 @@
                 <input type="text" class="form-control" id="section" name="section" value="${timetable.section}" required>
             </div>
 
-            <!-- Day 1 -->
-            <div class="form-group">
-                <label for="day1">Day 1</label>
-                <input type="text" class="form-control" id="day1" name="day1" value="${timetable.day1}" required>
-            </div>
+           <!-- Day 1 -->
+<div class="form-group">
+    <label for="day1">Day 1</label>
+    <select id="day1" name="day1" class="form-control" required>
+        <option value="">${timetable.day1}</option>
+        <option value="MON" ${timetable.day1 == 'MON' ? 'selected' : ''}>MON</option>
+        <option value="TUE" ${timetable.day1 == 'TUE' ? 'selected' : ''}>TUE</option>
+        <option value="WED" ${timetable.day1 == 'WED' ? 'selected' : ''}>WED</option>
+        <option value="THU" ${timetable.day1 == 'THU' ? 'selected' : ''}>THU</option>
+        <option value="FRI" ${timetable.day1 == 'FRI' ? 'selected' : ''}>FRI</option>
+    </select>
+</div>
 
             <!-- Time 1 -->
             <div class="form-group">
@@ -170,9 +125,16 @@
 
             <!-- Day 2 -->
             <div class="form-group">
-                <label for="day2">Day 2</label>
-                <input type="text" class="form-control" id="day2" name="day2" value="${timetable.day2}">
-            </div>
+    <label for="day2">Day 2 (optional):</label>
+    <select id="day2" name="day2" class="form-control">
+        <option value="">${timetable.day2}</option>
+        <option value="MON" ${timetable.day2 == 'MON' ? 'selected' : ''}>MON</option>
+        <option value="TUE" ${timetable.day2 == 'TUE' ? 'selected' : ''}>TUE</option>
+        <option value="WED" ${timetable.day2 == 'WED' ? 'selected' : ''}>WED</option>
+        <option value="THU" ${timetable.day2 == 'THU' ? 'selected' : ''}>THU</option>
+        <option value="FRI" ${timetable.day2 == 'FRI' ? 'selected' : ''}>FRI</option>
+    </select>
+</div>
 
             <!-- Time 2 -->
             <div class="form-group">
@@ -186,10 +148,31 @@
                 <input type="text" class="form-control" id="venue2" name="venue2" value="${timetable.venue2}">
             </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary">Update Course</button>
+            <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-custom">Update Course</button>
+    <button type="button" class="btn btn-secondary btn-custom" onclick="location.href='/UTMRegistEase/admin/editTimetable'">
+        Back
+    </button>
+</div>
+
+
         </form>
     </div>
+    
+    <script>
+    document.querySelector('form').addEventListener('submit', function () {
+        if (document.getElementById('day2').value.trim() === '') {
+            document.getElementById('day2').removeAttribute('name');
+        }
+        if (document.getElementById('time2').value.trim() === '') {
+            document.getElementById('time2').removeAttribute('name');
+        }
+        if (document.getElementById('venue2').value.trim() === '') {
+            document.getElementById('venue2').removeAttribute('name');
+        }
+    });
+
+    </script>
 
 </body>
 </html>
