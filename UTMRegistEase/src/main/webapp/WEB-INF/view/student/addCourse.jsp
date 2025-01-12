@@ -175,7 +175,7 @@
     </div>
     <div class="container">
         <h1>Add Course</h1>
-        <form method="get" action="/UTMRegistEase/student/addCourse" style="margin-left: 180px; margin-bottom: 20px;">
+        <form method="get" action="/UTMRegistEase/student/searchCourse" style="margin-left: 180px; margin-bottom: 20px;">
     <div class="form-group">
         <!-- Use param.searchQuery to retain the search input -->
         <input type="text" name="searchQuery" class="form-control" 
