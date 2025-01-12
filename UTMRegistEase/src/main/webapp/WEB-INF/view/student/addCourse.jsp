@@ -216,6 +216,7 @@
                 <tr>
                     <th>Program</th>
                     <th>Code</th>
+                    <th>Credit</th>
                     <th>Name</th>
                     <th>Section</th>
                     <th>Day</th>
@@ -229,6 +230,7 @@
                     <tr>
                         <td>${entry.program}</td>
                         <td>${entry.code}</td>
+                        <td>${entry.credit}</td>
                         <td>${entry.name}</td>
                         <td>${entry.section}</td>
                         <td>${entry.day1}</td>
@@ -238,6 +240,7 @@
                             <form action="addCourse" method="post" id="addCourseForm-${status.index}">
                                 <input type="hidden" name="program" value="${entry.program}" />
                                 <input type="hidden" name="code" value="${entry.code}" />
+                                <input type="hidden" name="name" value="${entry.credit}" />
                                 <input type="hidden" name="name" value="${entry.name}" />
                                 <input type="hidden" name="section" value="${entry.section}" />
                                 <input type="hidden" name="day1" value="${entry.day1}" />
