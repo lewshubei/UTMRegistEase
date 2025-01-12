@@ -205,7 +205,7 @@ th:nth-child(7), td:nth-child(7) {
             <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
             <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
             <li><a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
+            <li><a href="/UTMRegistEase/logout">Logout</a></li>
         </ul>
     </div>
     <div class="container">

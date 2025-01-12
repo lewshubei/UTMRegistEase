@@ -37,6 +37,7 @@ public class StudentController {
  // 3. Save a new timetable
     @PostMapping("/addCourse")
     public String saveCourse(@ModelAttribute("course") Course course) {
+    	course.setApproval_status("PENDING");
         courseService.saveCourse(course);
         return "redirect:/student/viewRegisteredCourse";
     }

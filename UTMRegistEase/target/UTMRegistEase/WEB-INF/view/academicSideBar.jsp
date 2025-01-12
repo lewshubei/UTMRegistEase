@@ -10,6 +10,7 @@
 				<li class="logo"><img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo"></li>
 				<li><a href="<c:url value='/academic/home'/>"><img src="<c:url value='/resources/icons/dashboard.png'/>" alt="Dashboard Icon"></a></li>
 				<li><a href="<c:url value='/academic/request'/>"><img src="<c:url value='/resources/icons/request.png'/>" alt="Request Icon"></a></li>
+				<li><a href="<c:url value='/logout'/>"><img src="<c:url value='/resources/icons/logout.png'/>" alt="Logout Icon"></a></li>
 			</ul>
 		</div>
 	</div>

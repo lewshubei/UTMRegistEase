@@ -40,6 +40,9 @@ public class Course {
 
     @Column(name = "venue2", nullable = true)
     private String venue2; // For Day 2
+    
+    @Column(name = "approval_status")
+    private String approval_status;
 
     // Default Constructor
     public Course() {}
@@ -47,7 +50,7 @@ public class Course {
     // Constructor with parameters
     public Course(String program, String code, String name, String section,
                   String day1, String time1, String venue1,
-                  String day2, String time2, String venue2) {
+                  String day2, String time2, String venue2, String approval_status) {
         this.program = program;
         this.code = code;
         this.name = name;
@@ -58,6 +61,7 @@ public class Course {
         this.day2 = day2;
         this.time2 = time2;
         this.venue2 = venue2;
+        this.approval_status = approval_status;
     }
 
     // Getters and Setters
@@ -147,5 +151,13 @@ public class Course {
 
     public void setVenue2(String venue2) {
         this.venue2 = venue2;
+    }
+    
+    public String getApproval_status() {
+    	return approval_status;
+    }
+    
+    public void setApproval_status(String approval_status) {
+    	this.approval_status = approval_status;
     }
 }
