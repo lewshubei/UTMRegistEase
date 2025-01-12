@@ -5,6 +5,7 @@
 <html>
 <head>
     <style>
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #e9ecef;
@@ -20,6 +21,24 @@ h1 {
     font-size: 28px;
     margin-left:180px;
 }
+.search-button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+}
+
+.search-button:hover {
+    background-color: #003366; /* Slightly darker shade for hover effect */
+}
 
 
 
@@ -32,7 +51,7 @@ h1 {
 
 /* Table styling */
 table {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     border-collapse: collapse;
     background-color: #ffffff;
@@ -40,7 +59,7 @@ table {
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    margin-left: 300px; /* Adjusted margin to move the table further to the right */
+    margin-left:180px;
 }
 
 th, td {
@@ -65,7 +84,19 @@ td {
 
 
 
-/* Back button styling */
+/* Table row hover effect */
+table tbody tr:hover,
+table tbody tr.hover {
+    background-color: #e6f7ff; /* Light blue background */
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 120px; /* Adjust width for Time column */
+}
+
+th:nth-child(7), td:nth-child(7) {
+    width: 150px; /* Adjust width for Venue column */
+}
 .back-button {
     background-color: #004080;
     color: white;
@@ -78,14 +109,12 @@ td {
     margin: 4px 2px;
     cursor: pointer;
     transition: background-color 0.3s;
-    border-radius: 10px;
-    margin-left: 300px; /* Adjusted margin to move the button further to the right */
+    border-radius: 10px
 }
 
 .back-button:hover {
     background-color: #003366; /* Slightly darker shade for hover effect */
 }
-
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .sidenav {
@@ -108,8 +137,9 @@ td {
         font-size: 12px;
     }
 }
-    </style>
-    <title>Search Results</title>
+</style>
+<title>Search Results</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
    <div class = "sidenav">

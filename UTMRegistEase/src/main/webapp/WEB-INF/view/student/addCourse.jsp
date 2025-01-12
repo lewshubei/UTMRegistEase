@@ -149,6 +149,26 @@
                 font-size: 12px;
             }
         }
+        
+        .search-button {
+		    background-color: #004080;
+		    color: white;
+		    border: none;
+		    padding: 10px 20px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 16px;
+		    margin: 4px 2px;
+		    cursor: pointer;
+		    transition: background-color 0.3s;
+		    border-radius: 10px;
+		}
+	
+		.search-button:hover {
+		    background-color: #003366; /* Slightly darker shade for hover effect */
+		}
+
     </style>
     <title>Add Course</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
