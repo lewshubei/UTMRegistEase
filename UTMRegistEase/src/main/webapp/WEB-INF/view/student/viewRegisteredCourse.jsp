@@ -198,8 +198,7 @@
                     </c:if>
                     <tr class="${entry.day2 != null ? 'rowspan' : ''}">
                         <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
-				        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
-				        
+				        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td> 
 				        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
 				        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
                         <td>${entry.day1}</td>
