@@ -212,53 +212,59 @@
 </c:if>
 
         <table>
-            <thead>
+    <thead>
+        <tr>
+            <th>Program</th>
+            <th>Code</th>
+            <th>Credit</th>
+            <th>Name</th>
+            <th>Section</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Venue</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="entry" items="${timetables}" varStatus="status">
+            <tr>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.credit}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
+                <td>${entry.day1}</td>
+                <td>${entry.time1}</td>
+                <td>${entry.venue1}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">
+                    <form action="addCourse" method="post" id="addCourseForm-${status.index}">
+                        <input type="hidden" name="program" value="${entry.program}" />
+                        <input type="hidden" name="code" value="${entry.code}" />
+                        <input type="hidden" name="credit" value="${entry.credit}" />
+                        <input type="hidden" name="name" value="${entry.name}" />
+                        <input type="hidden" name="section" value="${entry.section}" />
+                        <input type="hidden" name="day1" value="${entry.day1}" />
+                        <input type="hidden" name="time1" value="${entry.time1}" />
+                        <input type="hidden" name="venue1" value="${entry.venue1}" />
+                        <c:if test="${entry.day2 != null}">
+                            <input type="hidden" name="day2" value="${entry.day2}" />
+                            <input type="hidden" name="time2" value="${entry.time2}" />
+                            <input type="hidden" name="venue2" value="${entry.venue2}" />
+                        </c:if>
+                        <button type="button" class="btn btn-primary" onclick="confirmCourseAddition(document.getElementById('addCourseForm-${status.index}'))">Add Course</button>
+                    </form>
+                </td>
+            </tr>
+            <c:if test="${entry.day2 != null}">
                 <tr>
-                    <th>Program</th>
-                    <th>Code</th>
-                    <th>Credit</th>
-                    <th>Name</th>
-                    <th>Section</th>
-                    <th>Day</th>
-                    <th>Time</th>
-                    <th>Venue</th>
-                    <th>Actions</th>
+                    <td>${entry.day2}</td>
+                    <td>${entry.time2}</td>
+                    <td>${entry.venue2}</td>
                 </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="entry" items="${timetables}" varStatus="status">
-                    <tr>
-                        <td>${entry.program}</td>
-                        <td>${entry.code}</td>
-                        <td>${entry.credit}</td>
-                        <td>${entry.name}</td>
-                        <td>${entry.section}</td>
-                        <td>${entry.day1}</td>
-                        <td>${entry.time1}</td>
-                        <td>${entry.venue1}</td>
-                        <td>
-                            <form action="addCourse" method="post" id="addCourseForm-${status.index}">
-                                <input type="hidden" name="program" value="${entry.program}" />
-                                <input type="hidden" name="code" value="${entry.code}" />
-                                <input type="hidden" name="credit" value="${entry.credit}" />
-                                <input type="hidden" name="name" value="${entry.name}" />
-                                <input type="hidden" name="section" value="${entry.section}" />
-                                <input type="hidden" name="day1" value="${entry.day1}" />
-                                <input type="hidden" name="time1" value="${entry.time1}" />
-                                <input type="hidden" name="venue1" value="${entry.venue1}" />
-                                <c:if test="${entry.day2 != null}">
-                                    <input type="hidden" name="day2" value="${entry.day2}" />
-                                    <input type="hidden" name="time2" value="${entry.time2}" />
-                                    <input type="hidden" name="venue2" value="${entry.venue2}" />
-                                </c:if>
-                                <button type="button" class="btn btn-primary" onclick="confirmCourseAddition(document.getElementById('addCourseForm-${status.index}'))">Add Course</button>
-                            </form>
-                        </td>
-                    </tr>
-                    
-                </c:forEach>
-            </tbody>
-        </table>
+            </c:if>
+        </c:forEach>
+    </tbody>
+</table>
     </div>
 </body>
 </html>
