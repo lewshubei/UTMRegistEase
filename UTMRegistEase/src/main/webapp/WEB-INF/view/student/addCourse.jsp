@@ -240,7 +240,7 @@
                             <form action="addCourse" method="post" id="addCourseForm-${status.index}">
                                 <input type="hidden" name="program" value="${entry.program}" />
                                 <input type="hidden" name="code" value="${entry.code}" />
-                                <input type="hidden" name="name" value="${entry.credit}" />
+                                <input type="hidden" name="credit" value="${entry.credit}" />
                                 <input type="hidden" name="name" value="${entry.name}" />
                                 <input type="hidden" name="section" value="${entry.section}" />
                                 <input type="hidden" name="day1" value="${entry.day1}" />
