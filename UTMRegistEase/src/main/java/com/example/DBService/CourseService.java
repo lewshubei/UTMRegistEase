@@ -6,6 +6,7 @@ import com.example.repository.CourseDao;
 import com.example.repository.TimetableDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +37,9 @@ public class CourseService {
 
     // 3. Save a new course
     public void saveCourse(Course course) {
-        courseDao.save(course);
+    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
+    	course.setUsername(username);
+    	courseDao.save(course);
     }
 
     // 5. Delete a course by ID
@@ -60,5 +63,5 @@ public class CourseService {
             courseDao.save(course); // Save the updated course
         }
     }
-   
+    
 }
