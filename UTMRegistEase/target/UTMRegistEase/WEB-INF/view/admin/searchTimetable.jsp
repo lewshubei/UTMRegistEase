@@ -125,12 +125,13 @@ td {
                 <thead>
                     <tr>
                         <th>Program</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Section</th>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Venue</th>
+                    <th>Code</th>
+                    <th>Credit</th>
+                    <th>Name</th>
+                    <th>Section</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Venue</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,6 +139,7 @@ td {
                         <tr>
                             <td>${entry.program}</td>
                             <td>${entry.code}</td>
+                            <td>${entry.credit}</td>
                             <td>${entry.name}</td>
                             <td>${entry.section}</td>
                             <td>${entry.day1}</td>

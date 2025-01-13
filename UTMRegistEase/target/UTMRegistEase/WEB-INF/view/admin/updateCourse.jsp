@@ -85,6 +85,11 @@
                 <label for="code">Code</label>
                 <input type="text" class="form-control" id="code" name="code" value="${timetable.code}" required>
             </div>
+            
+            <div class="form-group">
+                <label for="credit">Code</label>
+                <input type="text" class="form-control" id="credit" name="credit" value="${timetable.credit}" required>
+            </div>
 
             <!-- Name -->
             <div class="form-group">

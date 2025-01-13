@@ -169,7 +169,9 @@
             <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
             <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
             <li><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
+            <li>
+            	<a href="/UTMRegistEase/logout">Logout</a>
+        	</li>
         </ul>
     </div>
     <div class="container">
@@ -179,6 +181,7 @@
                 <tr>
                     <th>Program</th>
                     <th>Code</th>
+                    <th>Credit</th>
                     <th>Name</th>
                     <th>Section</th>
                     <th>Day</th>
@@ -195,6 +198,7 @@
                     <tr class="${entry.day2 != null ? 'rowspan' : ''}">
                         <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
                         <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.code}</td>
+                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.credit}</td>
                         <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.name}</td>
                         <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.section}</td>
                         <td>${entry.day1}</td>

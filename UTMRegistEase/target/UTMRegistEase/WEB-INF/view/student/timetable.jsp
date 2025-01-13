@@ -173,6 +173,7 @@ th:nth-child(7), td:nth-child(7) {
                 <tr>
                     <th>Program</th>
                     <th>Code</th>
+                    <th>Credit</th>
                     <th>Name</th>
                     <th>Section</th>
                     <th>Day</th>
@@ -187,6 +188,7 @@ th:nth-child(7), td:nth-child(7) {
         <!-- rowspan checks if day2 is not empty or null -->
         <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
         <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
+        <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.credit}</td>
         <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
         <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
         <td>${entry.day1}</td>
