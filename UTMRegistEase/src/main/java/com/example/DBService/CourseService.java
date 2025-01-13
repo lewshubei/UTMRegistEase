@@ -14,54 +14,52 @@ import java.util.List;
 @Service
 public class CourseService {
 
+    private final CourseDao courseDao;
+    private final TimetableDao timetableDao;
+
     @Autowired
-    private CourseDao courseDao;
-    
-    @Autowired
-    private TimetableDao timetableDao;
-    
-    @Autowired
-    public CourseService(CourseDao courseDao) {
+    public CourseService(CourseDao courseDao, TimetableDao timetableDao) {
         this.courseDao = courseDao;
+        this.timetableDao = timetableDao;
     }
 
-    // 1. Get all courses
-    public List<Course> getAllCourses() {
-        return courseDao.findAll();
+    // 1. Get all courses for the current user
+    public List<Course> getAllCoursesForCurrentUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return courseDao.findAllByUsername(username);
     }
 
-    // 2. Get a course by ID
-    public Course getCourseById(int id) {
-        return courseDao.findById(id);
+    // 2. Get a specific course by ID for the current user
+    public Course getCourseByIdForCurrentUser(int id) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return courseDao.findByIdAndUsername(id, username);
     }
 
-    // 3. Save a new course
+    // 3. Save a new course for the current user
     public void saveCourse(Course course) {
-    	String username = SecurityContextHolder.getContext().getAuthentication().getName();
-    	course.setUsername(username);
-    	courseDao.save(course);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        course.setUsername(username); // Associate the course with the current user
+        courseDao.save(course);
     }
 
-    // 5. Delete a course by ID
-    public void deleteCourse(int id) {
-       courseDao.deleteById(id);
+    // 4. Delete a course by ID for the current user
+    public void deleteCourseForCurrentUser(int id) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        courseDao.deleteByIdAndUsername(id, username);
     }
-    
- 
-    // 6. Search for courses by program, code, or name
-//    public List<Course> searchCourses(String keyword) {
-//        return courseDao.searchByProgramCodeOrName(keyword);
-//    }
-    
+
+    // 5. Search for timetables
     public List<Timetable> searchTimetables(String keyword) {
         return timetableDao.searchByProgramCodeOrName(keyword);
     }
-    
-    public void submitAllCourses(List<Course> courses) {
-        for (Course course : courses) {
-            course.setSubmitted(true); // Mark as submitted
-            courseDao.save(course); // Save the updated course
+
+    // 6. Submit all courses for the current user
+    public void submitAllCoursesForCurrentUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<Course> userCourses = courseDao.findAllByUsername(username);
+        for (Course course : userCourses) {
+            course.setSubmitted(true); // Mark the course as submitted
+            courseDao.save(course);    // Save the updated course
         }
     }
-    
 }

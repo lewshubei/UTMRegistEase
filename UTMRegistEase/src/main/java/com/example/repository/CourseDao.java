@@ -21,28 +21,48 @@ public class CourseDao {
     public CourseDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    
-   
-    // 1. Retrieve all courses
+
+    // 1. Retrieve all courses for a specific user
+    public List<Course> findAllByUsername(String username) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "from Course where username = :username";
+            Query<Course> query = session.createQuery(hql, Course.class);
+            query.setParameter("username", username);
+            return query.list();
+        }
+    }
+
+    // 2. Retrieve a course by ID and username
+    public Course findByIdAndUsername(int id, String username) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "from Course where id = :id and username = :username";
+            Query<Course> query = session.createQuery(hql, Course.class);
+            query.setParameter("id", id);
+            query.setParameter("username", username);
+            return query.uniqueResult();
+        }
+    }
+
+    // 3. Retrieve all courses
     public List<Course> findAll() {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from Course", Course.class).list();
         }
     }
 
-    // 2. Retrieve a course by ID
+    // 4. Retrieve a course by ID
     public Course findById(int id) {
         try (Session session = sessionFactory.openSession()) {
             return session.get(Course.class, id);
         }
     }
 
-    // 3. Add a new course
+    // 5. Add or update a course
     public void save(Course course) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            session.save(course);
+            session.saveOrUpdate(course); // Save or update the course
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -52,40 +72,34 @@ public class CourseDao {
         }
     }
 
-
- // 5. Delete a course by ID
-    public void deleteById(int id) {
+    // 6. Delete a course by ID and username
+    public void deleteByIdAndUsername(int id, String username) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            Course course = session.get(Course.class, id); // Fetch the course
-            if (course != null) {
-                session.delete(course); // Delete the course
+            String hql = "delete from Course where id = :id and username = :username";
+            Query<?> query = session.createQuery(hql);
+            query.setParameter("id", id);
+            query.setParameter("username", username);
+            int result = query.executeUpdate();
+            if (result == 0) {
+                throw new IllegalStateException("No course found with the specified ID and username.");
             }
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback(); // Rollback in case of an error
+                transaction.rollback();
             }
-            throw e; // Rethrow the exception
+            throw e;
         }
     }
 
-//    public List<Course> searchByProgramCodeOrName(String keyword) {
-//        try (Session session = sessionFactory.openSession()) {
-//            String query = "from Timetable where lower(program) like :keyword " +
-//                           "or lower(code) like :keyword or lower(name) like :keyword";
-//            return session.createQuery(query, Course.class)
-//                          .setParameter("keyword", "%" + keyword.toLowerCase() + "%")
-//                          .list();
-//        }
-//    }
-    
+    // 7. Search courses or timetables by program, code, or name
     public List<Timetable> searchByProgramCodeOrName(String keyword) {
-    	try (Session session = sessionFactory.openSession()) {
-            String query = "from Timetable where lower(program) like :keyword " +
-                           "or lower(code) like :keyword or lower(name) like :keyword";
-            return session.createQuery(query, Timetable.class)
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "from Timetable where lower(program) like :keyword " +
+                         "or lower(code) like :keyword or lower(name) like :keyword";
+            return session.createQuery(hql, Timetable.class)
                           .setParameter("keyword", "%" + keyword.toLowerCase().trim() + "%")
                           .list();
         }
