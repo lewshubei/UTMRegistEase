@@ -54,7 +54,6 @@ public class Course {
     private String username;
 
     // Constructors, Getters, and Setters
-
     public Course() {}
 
     public Course(String program, String code, String name, String section,

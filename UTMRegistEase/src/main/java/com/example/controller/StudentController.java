@@ -91,8 +91,4 @@ public class StudentController {
         // Logic to handle course submission
         return "redirect:/student/submittedCourse";
     }
-
-
-    
-    
 }
