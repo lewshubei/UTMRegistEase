@@ -169,7 +169,9 @@
             <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
             <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
             <li><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li>
-            <li><a href="logout.jsp">Logout</a></li>
+            <li>
+            	<a href="/UTMRegistEase/logout">Logout</a>
+        	</li>
         </ul>
     </div>
     <div class="container">
