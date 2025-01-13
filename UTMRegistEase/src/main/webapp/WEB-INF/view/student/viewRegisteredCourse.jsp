@@ -180,12 +180,8 @@
                 <tr>
                     <th>Program</th>
                     <th>Code</th>
-<<<<<<< HEAD
-                    
-=======
-                    <th>Credit</th>
->>>>>>> refs/remotes/origin/timetable
-                    <th>Name</th>
+          			 <th>Credit</th>
+					 <th>Name</th>
                     <th>Section</th>
                     <th>Day</th>
                     <th>Time</th>
