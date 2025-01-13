@@ -40,9 +40,6 @@ h1 {
     background-color: #003366; /* Slightly darker shade for hover effect */
 }
 
-
-
-
 /* Main content area styling */
 .content {
     margin-left: 270px; /* Make space for the sidebar */
@@ -81,8 +78,6 @@ th {
 td {
     color: #555;
 }
-
-
 
 /* Table row hover effect */
 table tbody tr:hover,
@@ -152,31 +147,40 @@ th:nth-child(7), td:nth-child(7) {
         
         <c:if test="${not empty timetables}">
             <table>
-                <thead>
-                    <tr>
-                        <th>Program</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Section</th>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Venue</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="entry" items="${timetables}">
-                        <tr>
-                            <td>${entry.program}</td>
-                            <td>${entry.code}</td>
-                            <td>${entry.name}</td>
-                            <td>${entry.section}</td>
-                            <td>${entry.day1}</td>
-                            <td>${entry.time1}</td>
-                            <td>${entry.venue1}</td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+    <thead>
+        <tr>
+            <th>Program</th>
+            <th>Code</th>
+            <th>Credit</th>
+            <th>Name</th>
+            <th>Section</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Venue</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="entry" items="${timetables}" varStatus="status">
+            <tr>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.credit}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
+                <td>${entry.day1}</td>
+                <td>${entry.time1}</td>
+                <td>${entry.venue1}</td>
+            </tr>
+            <c:if test="${entry.day2 != null}">
+                <tr>
+                    <td>${entry.day2}</td>
+                    <td>${entry.time2}</td>
+                    <td>${entry.venue2}</td>
+                </tr>
+            </c:if>
+        </c:forEach>
+    </tbody>
+</table>
         </c:if>
         <c:if test="${empty timetables}">
             <p style="margin-left: 180px; color: red;">No results found for "<b>${param.searchQuery}</b>".</p>

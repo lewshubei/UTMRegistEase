@@ -211,7 +211,7 @@
     </form>
 </c:if>
 
-        <table>
+    <table>
     <thead>
         <tr>
             <th>Program</th>
