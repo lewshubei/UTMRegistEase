@@ -127,6 +127,23 @@
             width: 150px; /* Adjust width for Venue column */
         }
         
+        button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #003366; /* Slightly darker shade for hover effect */
+        }
+        
         /* Responsive Design */
         @media screen and (max-width: 768px) {
             .sidenav {
