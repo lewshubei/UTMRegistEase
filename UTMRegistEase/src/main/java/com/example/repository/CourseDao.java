@@ -114,4 +114,27 @@ public class CourseDao {
 	        return query.list();
 	    }
 	}
+	
+	public List<Course> findCoursesByUsernameAndAA(String academicName) {
+	    try (Session session = sessionFactory.openSession()) {
+	        System.out.println("Query academicName: " + academicName);
+
+	        String hql = "FROM Course WHERE lower(aa) LIKE lower(:aaValue)";
+	        List<Course> courses = session.createQuery(hql, Course.class)
+	                                      .setParameter("aaValue", "%" + academicName + "%") // 模糊匹配
+	                                      .list();
+	        System.out.println("Query result: " + courses);
+	        return courses;
+	    }
+	}
+	
+	public List<Course> findSlipByUsername(String username) {
+	    try (Session session = sessionFactory.openSession()) {
+	        String hql = "FROM Course WHERE username = :username";
+	        Query<Course> query = session.createQuery(hql, Course.class);
+	        query.setParameter("username", username);
+	        return query.list();
+	    }
+	}
+
 }

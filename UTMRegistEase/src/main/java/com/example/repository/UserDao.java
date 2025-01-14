@@ -34,4 +34,31 @@ public class UserDao {
             return query.uniqueResult();
         }
     }
+    
+    public String findAcademicNameByUsername(String username) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "SELECT u.academicName FROM User u WHERE u.username = :username";
+            return session.createQuery(hql, String.class)
+                          .setParameter("username", username)
+                          .uniqueResult();
+        }
+    }
+    
+    public User findUserByUsername(String username) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM User WHERE username = :username";
+            return session.createQuery(hql, User.class)
+                          .setParameter("username", username)
+                          .uniqueResult();
+        }
+    }
+    
+    public User findUserByStudentId(String studentId) {
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM User WHERE studentId = :studentId";
+            return session.createQuery(hql, User.class)
+                          .setParameter("studentId", studentId)
+                          .uniqueResult();
+        }
+    }
 }

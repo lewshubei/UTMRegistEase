@@ -55,6 +55,15 @@ public class Course {
     
     @Column(name = "semester")
     private String semester;
+    
+    @Column(name = "aa", nullable = true)
+    private String aa;
+    
+    @Transient
+    private String studentName;
+
+    @Transient
+    private String studentId;
 
     // Constructors, Getters, and Setters
     public Course() {}
@@ -62,7 +71,7 @@ public class Course {
     public Course(String program, String code, String name, String section,
                   String day1, String time1, String venue1,
                   String day2, String time2, String venue2,
-                  String approval_status, int credit, String username, String semester) {
+                  String approval_status, int credit, String username, String semester, String aa) {
         this.program = program;
         this.code = code;
         this.name = name;
@@ -77,6 +86,7 @@ public class Course {
         this.credit = credit;
         this.username = username;
         this.semester = semester;
+        this.aa = aa;
     }
 
 	public int getId() {
@@ -205,5 +215,29 @@ public class Course {
 
     public void setSemester(String semester) {
         this.semester = semester;
+    }
+    
+    public String getAa() {
+    	return aa;
+    }
+    
+    public void setAa(String aa) {
+    	this.aa = aa;
+    }
+    
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }

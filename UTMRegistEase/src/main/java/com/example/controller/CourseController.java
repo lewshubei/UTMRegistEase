@@ -49,8 +49,14 @@ public class CourseController {
 		model.addAttribute("courses", courses);
 		model.addAttribute("totalCredits", totalCredits);
 
-		String approvalStatus = courses.stream()
-				.allMatch(course -> "APPROVED".equalsIgnoreCase(course.getApproval_status())) ? "APPROVED" : "PENDING";
+		String approvalStatus;
+		if (courses.stream().allMatch(course -> "APPROVED".equalsIgnoreCase(course.getApproval_status()))) {
+		    approvalStatus = "APPROVED";
+		} else if (courses.stream().allMatch(course -> "REJECTED".equalsIgnoreCase(course.getApproval_status()))) {
+		    approvalStatus = "REJECTED";
+		} else {
+		    approvalStatus = "PENDING";
+		}
 		model.addAttribute("approvalStatus", approvalStatus);
 
 		boolean showModal = "true".equals(isSubmitted) && courses.isEmpty();

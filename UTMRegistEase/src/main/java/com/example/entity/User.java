@@ -29,6 +29,12 @@ public class User {
     @Column(name = "student_name", nullable = true)
     private String studentName;
 
+    @Column(name = "academic_id", nullable = true)
+    private String academicId;
+    
+    @Column(name = "academic_name", nullable = true)
+    private String academicName;
+    
     public User() {
     	
     }
@@ -80,5 +86,21 @@ public class User {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+    
+    public String getAcademicId() {
+    	return academicId;
+    }
+    
+    public void setAcademiId(String academicId) {
+    	this.academicId = academicId;
+    }
+    
+    public String getAcademicName() {
+    	return academicName;
+    }
+    
+    public void setAcademicName(String academicName) {
+    	this.academicName = academicName;
     }
 }
