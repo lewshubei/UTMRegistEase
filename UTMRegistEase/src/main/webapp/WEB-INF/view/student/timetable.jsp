@@ -140,6 +140,7 @@ th:nth-child(7), td:nth-child(7) {
 </style>
 	
     <title>Timetable</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
