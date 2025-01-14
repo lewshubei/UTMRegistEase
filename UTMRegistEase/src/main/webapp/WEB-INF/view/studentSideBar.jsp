@@ -63,6 +63,7 @@
             font-weight: bold;
             border-left: 4px solid #ffcc00; /* New border color */
         }
+        
     </style>
     <meta charset="UTF-8">
     <title>Student Sidebar</title>
@@ -72,9 +73,9 @@
     <img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px; margin-left:60px;">
     
     <h2>UTMRegistEase--STUDENT</h2>
-    <h3 style="color: white; text-align: center; margin-top: 10px;">
+    <h5 style="color: white; text-align: center; margin-top: 10px;">
     Welcome, <c:out value="${pageContext.request.userPrincipal.name}" />
-</h3>
+	</h5>
     
     
     <ul class="nav">

@@ -7,6 +7,16 @@
     <title>Login Page</title>
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/login-style.css'/>">
 </head>
+<style>
+body {
+    background-image: url('<c:url value="/resources/images/LoginBackground.jpg"/>');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+
+</style>
 <body>
      <div class="container">
         <div class="form-container">
