@@ -205,23 +205,30 @@ th:nth-child(7), td:nth-child(7) {
     ${entry.availability}
 </td>
                 <td rowspan="${not empty entry.day2 ? 2 : 1}">
-                    <form action="addCourse" method="post" id="addCourseForm-${status.index}">
-                        <input type="hidden" name="program" value="${entry.program}" />
-                        <input type="hidden" name="code" value="${entry.code}" />
-                        <input type="hidden" name="credit" value="${entry.credit}" />
-                        <input type="hidden" name="name" value="${entry.name}" />
-                        <input type="hidden" name="section" value="${entry.section}" />
-                        <input type="hidden" name="day1" value="${entry.day1}" />
-                        <input type="hidden" name="time1" value="${entry.time1}" />
-                        <input type="hidden" name="venue1" value="${entry.venue1}" />
-                        <c:if test="${entry.day2 != null}">
-                            <input type="hidden" name="day2" value="${entry.day2}" />
-                            <input type="hidden" name="time2" value="${entry.time2}" />
-                            <input type="hidden" name="venue2" value="${entry.venue2}" />
-                        </c:if>
-                        <button type="button" class="btn btn-primary" onclick="confirmCourseAddition(document.getElementById('addCourseForm-${status.index}'))">Add Course</button>
-                    </form>
-                </td>
+    <form action="addCourse" method="post" id="addCourseForm-${status.index}">
+        <input type="hidden" name="program" value="${entry.program}" />
+        <input type="hidden" name="code" value="${entry.code}" />
+        <input type="hidden" name="credit" value="${entry.credit}" />
+        <input type="hidden" name="name" value="${entry.name}" />
+        <input type="hidden" name="section" value="${entry.section}" />
+        <input type="hidden" name="day1" value="${entry.day1}" />
+        <input type="hidden" name="time1" value="${entry.time1}" />
+        <input type="hidden" name="venue1" value="${entry.venue1}" />
+        <c:if test="${entry.day2 != null}">
+            <input type="hidden" name="day2" value="${entry.day2}" />
+            <input type="hidden" name="time2" value="${entry.time2}" />
+            <input type="hidden" name="venue2" value="${entry.venue2}" />
+        </c:if>
+        <button 
+            type="button" 
+            class="btn btn-primary" 
+            onclick="confirmCourseAddition(document.getElementById('addCourseForm-${status.index}'))" 
+            <c:if test="${entry.availability == 'Full'}">disabled</c:if>>
+            Add Course
+        </button>
+    </form>
+</td>
+
             </tr>
             <c:if test="${entry.day2 != null}">
                 <tr>

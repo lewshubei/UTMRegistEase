@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
+<style>
 /* General body styling */
 body {
     font-family: Arial, sans-serif;

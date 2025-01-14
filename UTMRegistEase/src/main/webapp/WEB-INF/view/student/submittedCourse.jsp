@@ -30,7 +30,7 @@
             z-index: 1; /* Stay on top */
             top: 0;
             left: 0;
-            background-color: #004080; /* Background color */
+            background-color: #004080; /* Matching color from previous sidebar */
             overflow-x: hidden; /* Disable horizontal scroll */
             padding-top: 20px; /* Padding from the top */
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sidebar shadow */
@@ -72,6 +72,11 @@
         .sidenav ul li a:hover {
             background-color: #003366; /* Darker shade on hover */
             border-left: 4px solid #ffcc00; /* Yellow border to highlight link */
+        }
+    
+        .sidenav ul li#submittedCourse a {
+            background-color: #003366; /* Red background */
+            border-left: 4px solid #ffcc00; /* Optional yellow border for highlight */
         }
 
         /* Main content area styling */
@@ -154,67 +159,61 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<!-- 
-    <div class="sidenav">
-        <jsp:include page="/WEB-INF/view/studentSideBar.jsp">
-            <jsp:param name="activePage" value="addCourse" />
-        </jsp:include>
-    </div>
--->
-
 <div class="sidenav">
-<img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
-        <h2>UTMRegistEase--STUDENT</h2>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
-            <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
-            <li><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li>
-            <li>
-            	<a href="/UTMRegistEase/logout">Logout</a>
-        	</li>
-        </ul>
-    </div>
-    <div class="container">
-        <h1>Submitted Courses</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Program</th>
-                    <th>Code</th>
-                    <th>Credit</th>
-                    <th>Name</th>
-                    <th>Section</th>
-                    <th>Day</th>
-                    <th>Time</th>
-                    <th>Venue</th>
+    <img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
+    <h2>UTMRegistEase--STUDENT</h2>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
+        <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
+        <li id="submittedCourse"><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li> 
+        <li>
+            <a href="/UTMRegistEase/logout">Logout</a>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <h1>Submitted Courses</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Program</th>
+                <th>Code</th>
+                <th>Credit</th>
+                <th>Name</th>
+                <th>Section</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Venue</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="entry" items="${courses}" varStatus="status">
+                <c:set var="rowspan" value="1" />
+                <c:if test="${entry.day2 != null && !entry.day2.isEmpty()}">
+                    <c:set var="rowspan" value="2" />
+                </c:if>
+                <tr class="${entry.day2 != null ? 'rowspan' : ''}">
+                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
+                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.code}</td>
+                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.credit}</td>
+                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.name}</td>
+                    <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.section}</td>
+                    <td>${entry.day1}</td>
+                    <td>${entry.time1}</td>
+                    <td>${entry.venue1}</td>
                 </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="entry" items="${courses}" varStatus="status">
-                    <c:set var="rowspan" value="1" />
-                    <c:if test="${entry.day2 != null && !entry.day2.isEmpty()}">
-                        <c:set var="rowspan" value="2" />
-                    </c:if>
-                    <tr class="${entry.day2 != null ? 'rowspan' : ''}">
-                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.program}</td>
-                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.code}</td>
-                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.credit}</td>
-                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.name}</td>
-                        <td rowspan="${entry.day2 != null ? 2 : 1}">${entry.section}</td>
-                        <td>${entry.day1}</td>
-                        <td>${entry.time1}</td>
-                        <td>${entry.venue1}</td>
+                <c:if test="${entry.day2 != null}">
+                    <tr class="rowspan">
+                        <td>${entry.day2}</td>
+                        <td>${entry.time2}</td>
+                        <td>${entry.venue2}</td>
                     </tr>
-                    <c:if test="${entry.day2 != null}">
-                        <tr class="rowspan">
-                            <td>${entry.day2}</td>
-                            <td>${entry.time2}</td>
-                            <td>${entry.venue2}</td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-            </tbody>
-        </table>
-    </div>
+                </c:if>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

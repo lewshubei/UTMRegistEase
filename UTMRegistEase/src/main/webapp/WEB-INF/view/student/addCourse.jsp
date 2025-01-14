@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ 
     <style>
         /* Your existing CSS here */
         body {
@@ -23,57 +23,7 @@
             margin-left:180px;
         }
 
-        .sidenav {
-            height: 100%; /* Full height */
-            width: 250px; /* Sidebar width */
-            position: fixed; /* Fixed position */
-            z-index: 1; /* Stay on top */
-            top: 0;
-            left: 0;
-            background-color: #004080; /* Background color */
-            overflow-x: hidden; /* Disable horizontal scroll */
-            padding-top: 20px; /* Padding from the top */
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sidebar shadow */
-            display: flex; /* Add flexbox */
-            flex-direction: column; /* Align items vertically */
-        }
-
-        .sidenav h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .sidenav ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0;
-            margin: 0;
-            flex-grow: 1; /* Allow items to stretch */
-            display: flex;
-            flex-direction: column; /* Ensure vertical stacking */
-            gap: 10px; /* Space between links */
-        }
-
-        .sidenav ul li {
-            width: 230px; /* Stretch links to full width */
-        }
-
-        .sidenav ul li a {
-            display: block; /* Block elements for full-width clickable area */
-            color: white; /* Link color */
-            text-decoration: none; /* Remove underline */
-            padding: 12px 20px; /* Padding for links */
-            font-size: 16px;
-            text-align: left; /* Align text to the left */
-            transition: all 0.3s; /* Smooth hover effect */
-        }
-
-        .sidenav ul li a:hover {
-            background-color: #003366; /* Darker shade on hover */
-            border-left: 4px solid #ffcc00; /* Yellow border to highlight link */
-        }
-
+       
         /* Main content area styling */
         .content {
             margin-left: 270px; /* Make space for the sidebar */
@@ -250,23 +200,30 @@
     ${entry.availability}
 </td>
                 <td rowspan="${not empty entry.day2 ? 2 : 1}">
-                    <form action="addCourse" method="post" id="addCourseForm-${status.index}">
-                        <input type="hidden" name="program" value="${entry.program}" />
-                        <input type="hidden" name="code" value="${entry.code}" />
-                        <input type="hidden" name="credit" value="${entry.credit}" />
-                        <input type="hidden" name="name" value="${entry.name}" />
-                        <input type="hidden" name="section" value="${entry.section}" />
-                        <input type="hidden" name="day1" value="${entry.day1}" />
-                        <input type="hidden" name="time1" value="${entry.time1}" />
-                        <input type="hidden" name="venue1" value="${entry.venue1}" />
-                        <c:if test="${entry.day2 != null}">
-                            <input type="hidden" name="day2" value="${entry.day2}" />
-                            <input type="hidden" name="time2" value="${entry.time2}" />
-                            <input type="hidden" name="venue2" value="${entry.venue2}" />
-                        </c:if>
-                        <button type="button" class="btn btn-primary" onclick="confirmCourseAddition(document.getElementById('addCourseForm-${status.index}'))">Add Course</button>
-                    </form>
-                </td>
+    <form action="addCourse" method="post" id="addCourseForm-${status.index}">
+        <input type="hidden" name="program" value="${entry.program}" />
+        <input type="hidden" name="code" value="${entry.code}" />
+        <input type="hidden" name="credit" value="${entry.credit}" />
+        <input type="hidden" name="name" value="${entry.name}" />
+        <input type="hidden" name="section" value="${entry.section}" />
+        <input type="hidden" name="day1" value="${entry.day1}" />
+        <input type="hidden" name="time1" value="${entry.time1}" />
+        <input type="hidden" name="venue1" value="${entry.venue1}" />
+        <c:if test="${entry.day2 != null}">
+            <input type="hidden" name="day2" value="${entry.day2}" />
+            <input type="hidden" name="time2" value="${entry.time2}" />
+            <input type="hidden" name="venue2" value="${entry.venue2}" />
+        </c:if>
+        <button 
+            type="button" 
+            class="btn btn-primary" 
+            onclick="confirmCourseAddition(document.getElementById('addCourseForm-${status.index}'))" 
+            <c:if test="${entry.availability == 'Full'}">disabled</c:if>>
+            Add Course
+        </button>
+    </form>
+</td>
+
             </tr>
             <c:if test="${entry.day2 != null}">
                 <tr>
