@@ -161,15 +161,18 @@
 <body>
 <div class="sidenav">
     <img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
-    <h2>UTMRegistEase--STUDENT</h2>
-    
     <h5 style="color: white; text-align: center; margin-top: 10px;">
     Welcome, <c:out value="${pageContext.request.userPrincipal.name}" />
 	</h5>
+    
+    <h2>UTMRegistEase Student</h2>
+    
+    
     <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="/UTMRegistEase/student/viewTimetable">View Timetable</a></li>
         <li><a href="/UTMRegistEase/student/addCourse">Add Course</a></li>
-        <li id="submittedCourse"><a href="/UTMRegistEase/student/submittedCourse">Submitted Course</a></li> 
+        <li id="submittedCourse"><a href="/UTMRegistEase/student/submittedCourse">View Registered Course</a></li>
+        <li><a href="/UTMRegistEase/student/registration">Course Registration Slip</a></li>  
         <li>
             <a href="/UTMRegistEase/logout">Logout</a>
         </li>

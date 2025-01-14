@@ -7,6 +7,8 @@ import com.example.DBService.CourseService;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,17 +80,33 @@ public class StudentController {
         return "student/searchCourse";
     }
 
-    // Display submitted courses for the logged-in user
+ // Display submitted courses for the logged-in user
     @GetMapping("/submittedCourse")
-    public String listSubmittedCourses(Model model) {
-        model.addAttribute("courses", courseService.getAllCoursesForCurrentUser());
-        return "student/submittedCourse";
+    public String listSubmittedCourses(Model model, HttpSession session) {
+        // Check if courses are already submitted
+        Boolean coursesSubmitted = (Boolean) session.getAttribute("coursesSubmitted");
+
+        if (coursesSubmitted != null && coursesSubmitted) {
+            // If courses are submitted, show the submitted courses
+            model.addAttribute("courses", courseService.getAllCoursesForCurrentUser());
+            return "student/submittedCourse";
+        } else {
+            // If not submitted, redirect to registered courses page
+            return "redirect:/student/viewRegisteredCourse"; // Or a page where courses can still be selected
+        }
     }
 
     // Submit all courses for the logged-in user
     @PostMapping("/submittedCourse")
-    public String submitCourses() {
-        courseService.submitAllCoursesForCurrentUser(); // Mark all courses as submitted for the current user
+    public String submitCourses(HttpSession session) {
+        // Mark all courses as submitted for the current user
+        courseService.submitAllCoursesForCurrentUser();
+
+        // Set session attribute to track that courses have been submitted
+        session.setAttribute("coursesSubmitted", true);
+
+        // Redirect to the submitted courses page
         return "redirect:/student/submittedCourse";
     }
+
 }

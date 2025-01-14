@@ -152,7 +152,10 @@
                     <th>Day</th>
                     <th>Time</th>
                     <th>Venue</th>
-                    <th>Actions</th>
+                    <!-- Conditionally render Actions column -->
+                    <c:if test="${coursesSubmitted != true}">
+                        <th>Actions</th>
+                    </c:if>
                 </tr>
             </thead>
             <tbody>
@@ -171,14 +174,15 @@
                         <td>${entry.day1}</td>
                         <td>${entry.time1}</td>
                         <td>${entry.venue1}</td>
-                        <td rowspan="${entry.day2 != null ? 2 : 1}">
-                            <a href="/UTMRegistEase/student/deleteCourse?id=${entry.id}" 
-   								onclick="return confirm('Are you sure you want to delete this course?');">
-   								<i class='bx bx-trash bx-md'></i>
-							</a>
-
-
-                        </td>
+                        <!-- Conditionally render Actions column -->
+                        <c:if test="${coursesSubmitted != true}">
+                            <td rowspan="${entry.day2 != null ? 2 : 1}">
+                                <a href="/UTMRegistEase/student/deleteCourse?id=${entry.id}" 
+                                    onclick="return confirm('Are you sure you want to delete this course?');">
+                                    <i class='bx bx-trash bx-md'></i>
+                                </a>
+                            </td>
+                        </c:if>
                     </tr>
 
                     <!-- Second Row (Lecture 2, if available) -->
@@ -192,15 +196,16 @@
                 </c:forEach>
             </tbody>
         </table>
+
         <!-- Button to Submit Courses (Below the Table) -->
-<div style="text-align: center; margin-top: 20px;">
-    
-    
-    <form action="/UTMRegistEase/student/submittedCourse" method="GET">
-    <!-- Form fields -->
-    <button type="submit">Submit</button>
-</form>
-</div>
+        <div style="text-align: center; margin-top: 20px;">
+            <c:if test="${coursesSubmitted != true}">
+                <form action="/UTMRegistEase/student/submittedCourse" method="POST">
+                    <!-- Form fields -->
+                    <button type="submit">Submit</button>
+                </form>
+            </c:if>
+        </div>
     </div>
 
     <script>
