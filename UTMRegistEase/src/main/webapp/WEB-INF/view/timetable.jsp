@@ -179,6 +179,7 @@ th:nth-child(7), td:nth-child(7) {
                     <th>Day</th>
                     <th>Time</th>
                     <th>Venue</th>
+                    <th>Availability</th>
                 </tr>
             </thead>
             <tbody>
@@ -194,6 +195,18 @@ th:nth-child(7), td:nth-child(7) {
         <td>${entry.day1}</td>
         <td>${entry.time1}</td>
         <td>${entry.venue1}</td>
+        <td rowspan="${not empty entry.day2 ? 2 : 1}" 
+    style="background-color: 
+        ${entry.availability == 'Available' ? '#d4edda' : 
+        (entry.availability == 'Almost full' ? '#fff3cd' : 
+        (entry.availability == 'Full' ? '#f8d7da' : ''))};
+        color: 
+        ${entry.availability == 'Available' ? '#155724' : 
+        (entry.availability == 'Almost full' ? '#856404' : 
+        (entry.availability == 'Full' ? '#721c24' : ''))};
+        font-weight: bold;">
+    ${entry.availability}
+</td>
     </tr>
 
     <!-- Second Row (Lecture 2, if available) -->
