@@ -22,6 +22,12 @@ public class User {
     
     @Column(name = "role", nullable = false)
     private String role;
+    
+    @Column(name = "student_id", nullable = true)
+    private String studentId;
+
+    @Column(name = "student_name", nullable = true)
+    private String studentName;
 
     public User() {
     	
@@ -58,5 +64,21 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 }

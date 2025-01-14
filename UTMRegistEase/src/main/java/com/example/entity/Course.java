@@ -52,6 +52,9 @@ public class Course {
 
     @Column(name = "username")
     private String username;
+    
+    @Column(name = "semester")
+    private String semester;
 
     // Constructors, Getters, and Setters
     public Course() {}
@@ -59,7 +62,7 @@ public class Course {
     public Course(String program, String code, String name, String section,
                   String day1, String time1, String venue1,
                   String day2, String time2, String venue2,
-                  String approval_status, int credit, String username) {
+                  String approval_status, int credit, String username, String semester) {
         this.program = program;
         this.code = code;
         this.name = name;
@@ -73,6 +76,7 @@ public class Course {
         this.approval_status = approval_status;
         this.credit = credit;
         this.username = username;
+        this.semester = semester;
     }
 
 	public int getId() {
@@ -187,7 +191,6 @@ public class Course {
 		this.submitted = submitted;
 	}
 
-	// Getters and Setters for the new field
     public String getUsername() {
         return username;
     }
@@ -196,5 +199,11 @@ public class Course {
         this.username = username;
     }
     
-    
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
 }

@@ -41,6 +41,7 @@ public class StudentController {
     @PostMapping("/addCourse")
     public String saveCourse(@ModelAttribute("course") Course course) {
         course.setApproval_status("PENDING");
+        course.setSemester("2025-1");
         courseService.saveCourse(course);
         return "redirect:/student/viewRegisteredCourse";
     }

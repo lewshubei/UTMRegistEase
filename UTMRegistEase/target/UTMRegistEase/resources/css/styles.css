@@ -12,20 +12,15 @@ body {
 	min-height: 100vh;
 }
 
-.sidebar {
-	width: 100px;
-	background-color: #007bff;
-}
+.sidenav {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
 
-.sidebar ul {
-	list-style-type: none;
-	padding: 0;
-	text-align: center;
-}
-
-.sidebar ul li {
-	margin: 10px 0;
-}
+.sidenav ul li a {
+		font-size: 14px;
+	}
 
 .sidebar ul li.logo {
 	text-align: center;
@@ -341,4 +336,11 @@ body {
 	width: 100%;
 	background-color: white;
 	padding-left: 190px;
+}
+
+.content-slip {
+	padding: 20px;
+	width: 100%;
+	background-color: white;
+	padding-left: 260px;
 }

@@ -88,6 +88,9 @@
         <li class="${param.activePage == 'viewRegisteredCourse' ? 'active' : ''}">
             <a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a>
         </li>
+        <li class="${param.activePage == 'registration' ? 'active' : ''}">
+            <a href="/UTMRegistEase/student/registration">Course Registration Slip</a>
+        </li>
         <li>
             <a href="/UTMRegistEase/logout">Logout</a>
         </li>
