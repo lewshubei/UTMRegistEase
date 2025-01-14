@@ -142,6 +142,14 @@
 
             <label for="venue2">Venue 2 (optional):</label>
             <input type="text" id="venue2" name="venue2">
+            
+            <label for="availability">Availability:</label>
+            <select id="availability" name="availability">
+                <option value="">Select availability</option>
+                <option value="Available">Available</option>
+                <option value="Almost full">Almost full</option>
+                <option value="Full">Full</option>
+            </select>
 
             <button type="submit">Add Course</button>
 

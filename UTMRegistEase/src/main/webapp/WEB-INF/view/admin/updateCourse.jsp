@@ -152,6 +152,16 @@
                 <label for="venue2">Venue 2</label>
                 <input type="text" class="form-control" id="venue2" name="venue2" value="${timetable.venue2}">
             </div>
+            
+            <div class="form-group">
+    <label for="availability">Availability:</label>
+    <select id="availability" name="availability" class="form-control">
+        <option value="">${timetable.availability}</option>
+        <option value="Available" ${timetable.availability == 'Available' ? 'selected' : ''}>Available</option>
+        <option value="Almost full" ${timetable.availability == 'Almost full' ? 'selected' : ''}>Almost full</option>
+        <option value="Full" ${timetable.availability == 'Full' ? 'selected' : ''}>Full</option>
+    </select>
+</div>
 
             <div class="form-group">
     <button type="submit" class="btn btn-primary btn-custom">Update Course</button>
