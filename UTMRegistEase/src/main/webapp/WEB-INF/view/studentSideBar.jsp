@@ -27,6 +27,7 @@
             font-size: 20px;
         }
 
+<<<<<<< HEAD
         .sidenav ul {
             list-style-type: none;
             padding: 0;
@@ -36,6 +37,24 @@
             flex-direction: column;
             gap: 10px;
         }
+=======
+.sidenav h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.sidenav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Allow items to stretch */
+    display: flex;
+    flex-direction: column; /* Ensure vertical stacking */
+    gap: 10px; /* Space between links */
+}
+>>>>>>> refs/remotes/origin/SecurityConfig
 
         .sidenav ul li {
             width: 230px;
@@ -72,12 +91,17 @@
 <div class="sidenav">
     <img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px; margin-left:60px;">
     
+<<<<<<< HEAD
     <h2>UTMRegistEase--STUDENT</h2>
     <h5 style="color: white; text-align: center; margin-top: 10px;">
     Welcome, <c:out value="${pageContext.request.userPrincipal.name}" />
 	</h5>
     
     
+=======
+    <h2>UTMRegistEase</h2>
+    <h3>Student</h3>
+>>>>>>> refs/remotes/origin/SecurityConfig
     <ul class="nav">
         <li class="${param.activePage == 'viewTimetable' ? 'active' : ''}">
             <a href="/UTMRegistEase/student/viewTimetable">View Timetable</a>
@@ -87,6 +111,9 @@
         </li>
         <li class="${param.activePage == 'viewRegisteredCourse' ? 'active' : ''}">
             <a href="/UTMRegistEase/student/viewRegisteredCourse">View Registered Course</a>
+        </li>
+        <li class="${param.activePage == 'registration' ? 'active' : ''}">
+            <a href="/UTMRegistEase/student/registration">Course Registration Slip</a>
         </li>
         <li>
             <a href="/UTMRegistEase/logout">Logout</a>

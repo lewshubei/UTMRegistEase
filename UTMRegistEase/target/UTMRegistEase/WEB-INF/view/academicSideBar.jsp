@@ -80,10 +80,10 @@
     <h3>Academic Advisory</h3>
     <ul class="nav">
         <li class="${param.activePage == 'home' ? 'active' : ''}">
-            <a href="/UTMRegistEase/academic/home">dashboard</a>
+            <a href="/UTMRegistEase/academic/home">Dashboard</a>
         </li>
         <li class="${param.activePage == 'request' ? 'active' : ''}">
-            <a href="/UTMRegistEase/academic/request">request</a>
+            <a href="/UTMRegistEase/academic/request">Student Request</a>
         </li>
         <li>
             <a href="/UTMRegistEase/logout">Logout</a>

@@ -28,6 +28,13 @@
     font-size: 20px;
 }
 
+.sidenav h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
 .sidenav ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0;
@@ -69,10 +76,15 @@
 <div class="sidenav">
 <img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
     
+<<<<<<< HEAD
     <h2>UTMRegistEase--ADMIN</h2>
     <h3 style="color: white; text-align: center; margin-top: 10px;">
     Welcome, <c:out value="${pageContext.request.userPrincipal.name}" />
 </h3>
+=======
+    <h2>UTMRegistEase</h2>
+    <h3>Admin</h3>
+>>>>>>> refs/remotes/origin/SecurityConfig
     <ul class="nav">
         <li class="${param.activePage == 'viewTimetable' ? 'active' : ''}">
             <a href="/UTMRegistEase/admin/viewTimetable">View Timetable</a>

@@ -52,6 +52,18 @@ public class Course {
 
     @Column(name = "username")
     private String username;
+    
+    @Column(name = "semester")
+    private String semester;
+    
+    @Column(name = "aa", nullable = true)
+    private String aa;
+    
+    @Transient
+    private String studentName;
+
+    @Transient
+    private String studentId;
 
     // Constructors, Getters, and Setters
     public Course() {}
@@ -59,7 +71,7 @@ public class Course {
     public Course(String program, String code, String name, String section,
                   String day1, String time1, String venue1,
                   String day2, String time2, String venue2,
-                  String approval_status, int credit, String username) {
+                  String approval_status, int credit, String username, String semester, String aa) {
         this.program = program;
         this.code = code;
         this.name = name;
@@ -73,6 +85,8 @@ public class Course {
         this.approval_status = approval_status;
         this.credit = credit;
         this.username = username;
+        this.semester = semester;
+        this.aa = aa;
     }
 
 	public int getId() {
@@ -187,7 +201,6 @@ public class Course {
 		this.submitted = submitted;
 	}
 
-	// Getters and Setters for the new field
     public String getUsername() {
         return username;
     }
@@ -196,5 +209,35 @@ public class Course {
         this.username = username;
     }
     
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
     
+    public String getAa() {
+    	return aa;
+    }
+    
+    public void setAa(String aa) {
+    	this.aa = aa;
+    }
+    
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 }
