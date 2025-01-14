@@ -70,6 +70,9 @@
 <img src="<c:url value='/resources/images/UTM-LOGO.png'/>" alt="Logo" style="width:50%; max-width:200px; margin-bottom:10px;margin-left:60px;">
     
     <h2>UTMRegistEase--ADMIN</h2>
+    <h3 style="color: white; text-align: center; margin-top: 10px;">
+    Welcome, <c:out value="${pageContext.request.userPrincipal.name}" />
+</h3>
     <ul class="nav">
         <li class="${param.activePage == 'viewTimetable' ? 'active' : ''}">
             <a href="/UTMRegistEase/admin/viewTimetable">View Timetable</a>
