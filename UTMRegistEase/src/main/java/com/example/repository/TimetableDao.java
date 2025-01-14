@@ -57,11 +57,12 @@ public class TimetableDao {
 
             // Perform the update using HQL
             Query query = session.createQuery(
-                "UPDATE Timetable SET program = :program, code = :code, name = :name, " +
-                "section = :section, day1 = :day1, time1 = :time1, venue1 = :venue1, " +
-                "day2 = :day2, time2 = :time2, venue2 = :venue2, credit = :credit " +
-                "WHERE id = :id"
-            );
+            	    "UPDATE Timetable SET program = :program, code = :code, name = :name, " +
+            	    "section = :section, day1 = :day1, time1 = :time1, venue1 = :venue1, " +
+            	    "day2 = :day2, time2 = :time2, venue2 = :venue2, credit = :credit, " +
+            	    "availability = :availability WHERE id = :id"
+            	);
+
             query.setParameter("program", timetable.getProgram());
             query.setParameter("code", timetable.getCode());
             query.setParameter("name", timetable.getName());
@@ -73,7 +74,9 @@ public class TimetableDao {
             query.setParameter("time2", timetable.getTime2());
             query.setParameter("venue2", timetable.getVenue2());
             query.setParameter("credit", timetable.getCredit());
+            query.setParameter("availability", timetable.getAvailability());
             query.setParameter("id", timetable.getId());
+            
 
             int rowsUpdated = query.executeUpdate();
             if (rowsUpdated == 0) {

@@ -43,6 +43,9 @@ public class Timetable {
     
     @Column(name = "credit")
     private int credit;
+    
+    @Column(name = "availability")
+    private String availability; // For Day 1
 
     // Default Constructor
     public Timetable() {}
@@ -50,7 +53,7 @@ public class Timetable {
     // Constructor with parameters
     public Timetable(String program, String code, String name, String section,
                      String day1, String time1, String venue1,
-                     String day2, String time2, String venue2,int credit) {
+                     String day2, String time2, String venue2,int credit, String availability) {
         this.program = program;
         this.code = code;
         this.name = name;
@@ -62,9 +65,18 @@ public class Timetable {
         this.time2 = time2;
         this.venue2 = venue2;
         this.credit = credit;
+        this.availability = availability;
     }
 
-    // Getters and Setters
+    public String getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(String availability) {
+		this.availability = availability;
+	}
+
+	// Getters and Setters
     public int getId() {
         return id;
     }

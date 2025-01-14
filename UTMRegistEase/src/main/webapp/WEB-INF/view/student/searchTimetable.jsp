@@ -157,6 +157,7 @@ th:nth-child(7), td:nth-child(7) {
             <th>Day</th>
             <th>Time</th>
             <th>Venue</th>
+            <th>Availability</th>
         </tr>
     </thead>
     <tbody>
@@ -170,6 +171,7 @@ th:nth-child(7), td:nth-child(7) {
                 <td>${entry.day1}</td>
                 <td>${entry.time1}</td>
                 <td>${entry.venue1}</td>
+                <td>${entry.availability}</td>
             </tr>
             <c:if test="${entry.day2 != null}">
                 <tr>
