@@ -5,6 +5,7 @@
 <html>
 <head>
     <style>
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #e9ecef;
@@ -20,9 +21,24 @@ h1 {
     font-size: 28px;
     margin-left:180px;
 }
+.search-button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+}
 
-
-
+.search-button:hover {
+    background-color: #003366; /* Slightly darker shade for hover effect */
+}
 
 /* Main content area styling */
 .content {
@@ -32,7 +48,7 @@ h1 {
 
 /* Table styling */
 table {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     border-collapse: collapse;
     background-color: #ffffff;
@@ -40,7 +56,7 @@ table {
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    margin-left: 300px; /* Adjusted margin to move the table further to the right */
+    margin-left:180px;
 }
 
 th, td {
@@ -63,9 +79,19 @@ td {
     color: #555;
 }
 
+/* Table row hover effect */
+table tbody tr:hover,
+table tbody tr.hover {
+    background-color: #e6f7ff; /* Light blue background */
+}
 
+th:nth-child(6), td:nth-child(6) {
+    width: 120px; /* Adjust width for Time column */
+}
 
-/* Back button styling */
+th:nth-child(7), td:nth-child(7) {
+    width: 150px; /* Adjust width for Venue column */
+}
 .back-button {
     background-color: #004080;
     color: white;
@@ -78,14 +104,12 @@ td {
     margin: 4px 2px;
     cursor: pointer;
     transition: background-color 0.3s;
-    border-radius: 10px;
-    margin-left: 300px; /* Adjusted margin to move the button further to the right */
+    border-radius: 10px
 }
 
 .back-button:hover {
     background-color: #003366; /* Slightly darker shade for hover effect */
 }
-
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .sidenav {
@@ -108,8 +132,9 @@ td {
         font-size: 12px;
     }
 }
-    </style>
-    <title>Search Results</title>
+</style>
+<title>Search Results</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
    <div class = "sidenav">
@@ -122,33 +147,53 @@ td {
         
         <c:if test="${not empty timetables}">
             <table>
-                <thead>
-                    <tr>
-                        <th>Program</th>
-                    <th>Code</th>
-                    <th>Credit</th>
-                    <th>Name</th>
-                    <th>Section</th>
-                    <th>Day</th>
-                    <th>Time</th>
-                    <th>Venue</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="entry" items="${timetables}">
-                        <tr>
-                            <td>${entry.program}</td>
-                            <td>${entry.code}</td>
-                            <td>${entry.credit}</td>
-                            <td>${entry.name}</td>
-                            <td>${entry.section}</td>
-                            <td>${entry.day1}</td>
-                            <td>${entry.time1}</td>
-                            <td>${entry.venue1}</td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+    <thead>
+        <tr>
+            <th>Program</th>
+            <th>Code</th>
+            <th>Credit</th>
+            <th>Name</th>
+            <th>Section</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Venue</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="entry" items="${timetables}" varStatus="status">
+            <tr>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.program}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.code}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.credit}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.name}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}">${entry.section}</td>
+                <td>${entry.day1}</td>
+                <td>${entry.time1}</td>
+                <td>${entry.venue1}</td>
+                <td rowspan="${not empty entry.day2 ? 2 : 1}" 
+    style="background-color: 
+        ${entry.availability == 'Available' ? '#d4edda' : 
+        (entry.availability == 'Almost full' ? '#fff3cd' : 
+        (entry.availability == 'Full' ? '#f8d7da' : ''))};
+        color: 
+        ${entry.availability == 'Available' ? '#155724' : 
+        (entry.availability == 'Almost full' ? '#856404' : 
+        (entry.availability == 'Full' ? '#721c24' : ''))};
+        font-weight: bold;">
+    ${entry.availability}
+</td>
+            </tr>
+            <c:if test="${entry.day2 != null}">
+                <tr>
+                    <td>${entry.day2}</td>
+                    <td>${entry.time2}</td>
+                    <td>${entry.venue2}</td>
+                </tr>
+            </c:if>
+        </c:forEach>
+    </tbody>
+</table>
         </c:if>
         <c:if test="${empty timetables}">
             <p style="margin-left: 180px; color: red;">No results found for "<b>${param.searchQuery}</b>".</p>
